@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>WebM 技术探秘- VP8的候补参考帧(译) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Alternate Reference Frames in VP8VP8 uses three types of reference frames for inter prediction: the last frame, a “golden” frame (one frame worth of decompressed data from the arbitrarily distant past">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebM 技术探秘- VP8的候补参考帧(译)">
+<meta property="og:url" content="http://jingcmu.com/2015/01/13/WebM-技术探秘-VP8的候补参考帧-译/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Alternate Reference Frames in VP8VP8 uses three types of reference frames for inter prediction: the last frame, a “golden” frame (one frame worth of decompressed data from the arbitrarily distant past">
+<meta property="og:updated_time" content="2015-01-13T23:12:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WebM 技术探秘- VP8的候补参考帧(译)">
+<meta name="twitter:description" content="Alternate Reference Frames in VP8VP8 uses three types of reference frames for inter prediction: the last frame, a “golden” frame (one frame worth of decompressed data from the arbitrarily distant past">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://jingcmu.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-WebM-技术探秘-VP8的候补参考帧-译" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/13/WebM-技术探秘-VP8的候补参考帧-译/" class="article-date">
+  <time datetime="2015-01-13T06:26:58.000Z" itemprop="datePublished">2015-01-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      WebM 技术探秘- VP8的候补参考帧(译)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Alternate-Reference-Frames-in-VP8"><a href="#Alternate-Reference-Frames-in-VP8" class="headerlink" title="Alternate Reference Frames in VP8"></a>Alternate Reference Frames in VP8</h2><p>VP8 uses three types of reference frames for inter prediction: the last frame, a “golden” frame (one frame worth of decompressed data from the arbitrarily distant past) and an alternate reference frame. Overall, this design has a much smaller memory footprint on both encoders and decoders than designs with many more reference frames. In video compression, it is very rare for more than three reference frames to provide significant quality benefit, but the undesirable increase in memory footprint from the extra frames is substantial.<br>Unlike other types of reference frames used in video compression, which are displayed to the user by the decoder, the VP8 alternate reference frame is decoded normally but is never shown to the user. It is used solely as a reference to improve inter prediction for other coded frames. Because alternate reference frames are not displayed, VP8 encoders can use them to transmit any data that are helpful to compression. For example, a VP8 encoder can construct one alternate reference frame from multiple source frames, or it can create an alternate reference frame using different macroblocks from hundreds of different video frames.<br>The current VP8 implementation enables two different types of usage for the alternate reference frame: noise-reduced prediction and past/future directional prediction.</p>
+<h2 id="VP8的候补参考帧"><a href="#VP8的候补参考帧" class="headerlink" title="VP8的候补参考帧"></a>VP8的候补参考帧</h2><p>VP8用三种类型的参考帧做帧间预测：前一帧，“金”帧（过去的在压缩数据上有价值的一帧，可以是任意远的一帧）和候补参考帧。总而言之，这种设计在内存的需求上比其他需要很多参考帧的设计要小得多。在视频压缩中，需要使用超过三帧参考帧来显著提高压缩质量的情况是非常少的，而使用较多参考帧带来的内存消耗却是显著的。视频压缩中用到的其他类型的参考帧都是用来解码呈现给用户的，而VP8的候补参考帧却从不在用户端播放，它们仅仅用来作为参考帧来改善其他帧的帧间预测质量。正因为候补参考帧并不用来播放，VP8的编码器可以用它们来传输任意的数据用来帮助压缩。比如，一个VP8的编码器可以用好几帧视频构建一帧，或者从数以百计的视频中拿出不同位置的宏块拼成一帧视频。当前VP8的实现有两种使用候补参考帧的方式：降噪预测（noise-reduced prediction）和前/后向预测（past/future directional prediction）。</p>
+<h2 id="Noise-Reduced-Prediction"><a href="#Noise-Reduced-Prediction" class="headerlink" title="Noise-Reduced Prediction"></a>Noise-Reduced Prediction</h2><p>The alternate reference frame is transmitted and decoded similar to other frames, hence its usage does not add extra computation in decoding. The VP8 encoder however is free to use more sophisticated processing to create them in off-line encoding. One application of the alternate reference frame is for noise-reduced prediction. In this application, the VP8 encoder uses multiple input source frames to construct one reference frame through temporal or spatial noise filtering. This “noise-free” alternate reference frame is then used to improve prediction for encoding subsequent frames.<br>You can make use of this feature by setting ARNR parameters in VP8 encoding, where ARNR stands for “Alternate Reference Noise Reduction.” A sample two-pass encoding setting with the parameters: –arnr-maxframes=5 –arnr-strength=3<br>enables the encoder to use “5” consecutive input source frames to produce one alternate reference frame using a filtering strength of “3”. </p>
+<h2 id="降噪预测"><a href="#降噪预测" class="headerlink" title="降噪预测"></a>降噪预测</h2><p>候补参考帧的传输和解码跟其他类型的帧是类似的，因此不会增加额外的解码复杂度。但VP8的编码器可以使用更加复杂的过程去离线的创建候补参考帧。其中一个使用的方式是降噪预测，VP8的编码器使用输入的几帧视频，通过时域或者空域降噪滤波器去构造一帧参考帧。这种“无噪”的候补参考帧接下来用于提高后续帧的预测质量。<br>你可以通过设置VP8编码器的ARNR参数来使用这一特性。ARNR代表“候补参考帧降噪（Alternate Reference Noise Reduction）”。比如一个two-pass的编码设置可以这样用这个参数：–arnr-maxframes=5 –arnr-strength=3<br>这个设置让编码器可以使用5个连续的输入帧来生成一个候补参考帧，降噪滤波器的强度设置为3.</p>
+<h2 id="Improving-Prediction-without-B-Frames"><a href="#Improving-Prediction-without-B-Frames" class="headerlink" title="Improving Prediction without B Frames"></a>Improving Prediction without B Frames</h2><p>The lack of B frames in VP8 has sparked some discussion about its ability to achieve competitive compression efficiency. VP8 encoders, however, can make intelligent use of the golden reference and the alternate reference frames to compensate for this. The VP8 encoder can choose to transmit an alternate reference frame similar to a “future” frame, and encoding of subsequent frames can make use of information from the past (last frame and golden frame) and from the future (alternate reference frame). Effectively, this helps the encoder to achieve results similar to bidirectional (B frame) prediction without requiring frame reordering in the decoder. Running in two-pass encoding mode, compression can be improved in the VP8 encoder by using encoding parameters that enable lagged encoding and automatic placement of alternate reference frames:<br>–auto-alt-ref=1 –lag-in-frames=16<br>Used this way, the VP8 encoder can achieve improved prediction and compression efficiency without increasing the decoder’s complexity:</p>
+<h2 id="不使用B帧来提高预测质量"><a href="#不使用B帧来提高预测质量" class="headerlink" title="不使用B帧来提高预测质量"></a>不使用B帧来提高预测质量</h2><p>由于不使用B帧，VP8引发了一些关于其压缩效率的讨论。然而，VP8编码器可以机智的利用“金”帧和候补参考帧来弥补缺少B帧的不足。VP8编码器可以选择传输一个跟未来帧相似的候补参考帧，这样编码后续的帧就可以同时使用过去的帧（上一帧和“金”帧）以及未来帧（候补参考帧）。这种做法的另一个好处是，它既可以取得类似双向预测的效果又避免了解码端显示帧的重排序。在two-pass模式下，compression can be improved in the VP8 encoder by using encoding parameters that enable lagged encoding and automatic placement of alternate reference frames：（不知道怎么翻）<br>–auto-alt-ref=1 –lag-in-frames=16</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jingcmu.com/2015/01/13/WebM-技术探秘-VP8的候补参考帧-译/" data-id="cixyv6en2001ej0p2mp5m0z38" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPX/">VPX</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/16/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/01/03/-LeetCode新题-Excel-Sheet-Column-Title/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">[LeetCode新题] Excel Sheet Column Title</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/say/">say</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/古文观止/">古文观止</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作总结/">工作总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心理学/">心理学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/照片-视频/">照片/视频</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/科技界/">科技界</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运动/">运动</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Alfred/">Alfred</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MacOS/">MacOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sundy/">Sundy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPX/">VPX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebRTC/">WebRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/others/">others</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/">stl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal/">terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webRTC/">webRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/你该知道的/">你该知道的</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开心/">开心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感人/">感人</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搞笑/">搞笑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活哲学/">生活哲学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网球/">网球</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美食/">美食</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/肌肉/">肌肉</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/荀子/">荀子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/说说/">说说</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/郁闷/">郁闷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Alfred/" style="font-size: 10px;">Alfred</a> <a href="/tags/C-C/" style="font-size: 12px;">C/C++</a> <a href="/tags/Google/" style="font-size: 18px;">Google</a> <a href="/tags/MacOS/" style="font-size: 16px;">MacOS</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Sundy/" style="font-size: 14px;">Sundy</a> <a href="/tags/VPX/" style="font-size: 14px;">VPX</a> <a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/others/" style="font-size: 10px;">others</a> <a href="/tags/stl/" style="font-size: 10px;">stl</a> <a href="/tags/terminal/" style="font-size: 16px;">terminal</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/webRTC/" style="font-size: 12px;">webRTC</a> <a href="/tags/你该知道的/" style="font-size: 12px;">你该知道的</a> <a href="/tags/动态规划/" style="font-size: 14px;">动态规划</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开心/" style="font-size: 12px;">开心</a> <a href="/tags/感人/" style="font-size: 10px;">感人</a> <a href="/tags/搞笑/" style="font-size: 12px;">搞笑</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/生活哲学/" style="font-size: 12px;">生活哲学</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/网球/" style="font-size: 10px;">网球</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/肌肉/" style="font-size: 10px;">肌肉</a> <a href="/tags/荀子/" style="font-size: 10px;">荀子</a> <a href="/tags/说说/" style="font-size: 10px;">说说</a> <a href="/tags/郁闷/" style="font-size: 10px;">郁闷</a> <a href="/tags/面试/" style="font-size: 12px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/01/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/13/WebM-技术探秘-VP8的候补参考帧-译/">WebM 技术探秘- VP8的候补参考帧(译)</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/03/-LeetCode新题-Excel-Sheet-Column-Title/">[LeetCode新题] Excel Sheet Column Title</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/03/-LeetCode新题-Intersection-of-Two-Linked-Lists/">[LeetCode新题]Intersection of Two Linked Lists</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/03/一个简单的面试题/">一个简单的面试题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

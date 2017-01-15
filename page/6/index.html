@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://jingcmu.com/page/6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://jingcmu.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-动态规划-最长递增子序列" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/17/动态规划-最长递增子序列/" class="article-date">
+  <time datetime="2014-09-17T12:01:45.000Z" itemprop="datePublished">2014-09-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/17/动态规划-最长递增子序列/">动态规划 - 最长递增子序列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对一个子序列，比如{1, 9, 3, 8, 11, 4, 5, 6, 4, 19, 7, 1, 7 }，求最长递增子序列，不要求连续，这样一个字符串的的最长递增子序列就是{1,3,4,5,6,7}或者{1,3,4,5,6,19}。</p>
+<p>思路：跟我之前发的《动态规划之项目安排》的思路很像，但是要简单些。</p>
+<p>假设我们知道d[i]代表到第i个位置的最长递增子序列的长度，那么d[i+1]该怎么求？</p>
+<p>在第i+1位置无非是两种情况，取和不取，取的话，那么就在0-i位置找到小于第i+1位置数字的最后一个位置，假设为j，即A[j] &lt; A[i+1]，这种情况下，递增子序列长度就是d[j]+1，如果不取，那d[i+1] = d[i]，就这两种情况，其实说白了就是个0-1背包问题。</p>
+<p>状态转移方程是：d[i+1] = max(d[i], d[j]+1), where A[j] is the latest number smaller than A[i+1].</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jingcmu.com/2014/09/17/动态规划-最长递增子序列/" data-id="cixyv6enz003lj0p2dfxdqyr2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-动态规划-之-矩阵链式乘法数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/17/动态规划-之-矩阵链式乘法数/" class="article-date">
+  <time datetime="2014-09-17T11:43:10.000Z" itemprop="datePublished">2014-09-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/17/动态规划-之-矩阵链式乘法数/">动态规划 - 之 - 矩阵链式乘法数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个问题是动态规划的基础的问题，也是算法导论中讨论过的问题。在这里先简单描述一下。假定有一组矩阵需要做乘法操作。但是我们知道首先矩阵乘法满足了结合律。所以可以按照不同的顺序做乘法。而且不同顺序做乘法最后的乘法次数是不同的。比如〈A1, A2, A3〉分别是10 × 100, 100 × 5, 和 5 × 50。如果按照((A1 A2) A3)的顺序来计算,就是7500次，但是如果(A1 (A2 A3))这样的顺序，那结果就是75000次！！！这里有10倍的差距。所以这个题目的意思就是找到一个方案使得需要做乘法的次数最少。</p>
+<p>现在我们尝试用大白话来继续一下。问题的解决方案侧重在两个方面。一个是最少乘法的次数，另一个就是最小乘法次数的流程。在代码中我们分别用m,s来表示。先说一下m的含义。m是个二维数组，m[i,j]表示从矩阵i到矩阵j的最小乘法次数。也就是A[i],A[i+1]….A[j]的最小乘法次数。可以发现，这个次数应该等于A[i],A[i+1]…A[k] * A[k+1]….A[j-1]A[j]的次数，这里的k是输入i到j这个开区间的某个数。找到这个数字，我们也就找到了最小乘法次数。</p>
+<p>那怎么找到这个数字呢？简单的说就是把所有的可能性都列举出一遍k=i, i+1, i+2…j都尝试一遍。比较最小值就可以了。有了这个思路我们可以把递归公式写成:</p>
+<p>递归公式<br><img src="https://static.flickr.com/3869/15273951495_c1463fdaf4_o.png" alt=""></p>
+<p>这里的p就是你的矩阵维数的数组。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jingcmu.com/2014/09/17/动态规划-之-矩阵链式乘法数/" data-id="cixyv6eny003jj0p2a9cp509o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Twitter电话面试题目和我的解答" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/17/Twitter电话面试题目和我的解答/" class="article-date">
+  <time datetime="2014-09-17T06:02:21.000Z" itemprop="datePublished">2014-09-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/面试/">面试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/17/Twitter电话面试题目和我的解答/">Twitter电话面试题目和我的解答</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Given:</p>
+<ol>
+<li>A graph contains red and blue nodes</li>
+<li>Each node has up between 1 and n neighbors</li>
+<li>Find the largest connected network of a given color, e.g. red</li>
+</ol>
+<p><img src="https://static.flickr.com/5586/15271742815_9212261ff1_m.jpg" alt=""></p>
+<p>Input:<br>  { Nodes: [R1, R2, B1, B2, B3, R3, R5, R4], Red: true}</p>
+<p>Output:<br>  R2 or R3 or R4 or R5</p>
+<p>Input:<br>  { Nodes: [R1, R2, B1, B2, B3, R3, R5, R4], Red: false}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">class Node &#123;  </div><div class="line">private:  </div><div class="line">    vector&lt;Node&gt; neighbors;  </div><div class="line">    bool color; // true =&gt; red, false =&gt; blue  </div><div class="line">    vector&lt;Node&gt; largest;  </div><div class="line">  </div><div class="line">public:  </div><div class="line">    vector&lt;Node&gt; findLargest(vector&lt;Node&gt; nodes, bool color) &#123;  </div><div class="line">        vector&lt;Node&gt; tmp;  </div><div class="line">        unordered_map&lt;Node, bool&gt; visited;  </div><div class="line">        queue&lt;Node&gt; q, q_r;  </div><div class="line">        int num = 0;  </div><div class="line">        int index = 0, max_size = 0;  </div><div class="line">        int size = nodes.size();  </div><div class="line">        if(size == 0) return tmp;          </div><div class="line">        while(num &lt; size) &#123;    </div><div class="line">            int cur;         </div><div class="line">            for(int i=0; i&lt;size; i++) &#123;  </div><div class="line">                if(visited.find(nodes[i]) == visited.end() &amp;&amp; nodes[i].color == color) &#123;  </div><div class="line">                    cur = i;  </div><div class="line">                    break;  </div><div class="line">                &#125;  </div><div class="line">            &#125;     </div><div class="line">  </div><div class="line">            q.push(nodes[cur]);    // R4        </div><div class="line">            tmp.clear();  </div><div class="line">            tmp.push_back(nodes[cur]);  </div><div class="line">            visited[nodes[cur]] = true;  </div><div class="line">            num++;  </div><div class="line">            while(!q.empty()) &#123;  </div><div class="line">                for(int i=0; i&lt;q.size(); i++) &#123;  </div><div class="line">                    Node n = q.front();  </div><div class="line">                    q.pop();  </div><div class="line">                    for(int i=0; i &lt; n.neighbors.size(); i++) &#123; //   </div><div class="line">                        if(visited.find(n.neighbors[i]) == visited.end()) &#123;  </div><div class="line">                            if(n.neighbors[i].color == color) &#123;  </div><div class="line">                                q_r.push(n.neighbors[i]);  </div><div class="line">                                tmp.push_back(n.neighbors[i]);                          </div><div class="line">                            &#125;  </div><div class="line">                            visited[n.neighbors[i]] = true;  </div><div class="line">                            num++;  </div><div class="line">                        &#125;                      </div><div class="line">                    &#125;  </div><div class="line">                &#125;  </div><div class="line">                swap(q, q_r);  </div><div class="line">            &#125;  </div><div class="line">            if(max_size &lt; tmp.size()) &#123;  </div><div class="line">                max_size = tmp.size();  </div><div class="line">                largest = tmp;   </div><div class="line">            &#125;  </div><div class="line">        &#125;  </div><div class="line">        return largest;  </div><div class="line">    &#125;  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jingcmu.com/2014/09/17/Twitter电话面试题目和我的解答/" data-id="cixyv6en1001aj0p2cpm721ms" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-stl里关于heap的函数与priority-queue的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/17/stl里关于heap的函数与priority-queue的区别/" class="article-date">
+  <time datetime="2014-09-17T05:29:31.000Z" itemprop="datePublished">2014-09-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/17/stl里关于heap的函数与priority-queue的区别/">stl里关于heap的函数与priority_queue的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>大家都知道，priority_queue是用堆实现的，可以通过重载（）运算符选择使用最大堆或最小堆。以前一直觉得stl里面的heap相关的函数都是多余的，因为一般的heap操作都可以用priority_queue来做。直到今天看了July博客中的那道<a href="http://blog.csdn.net/v_JULY_v/article/details/6370650" target="_blank" rel="external">求前k小的数</a>才发现stl中heap操作独立存在的必要。</p>
+<p>在求前k小的数这道题中，有一个解法是，用最小堆初始化数组，然后取前k小的数，复杂度是建堆O(N)+取数O(K*log(N))。原来，对一个数组进行建堆的复杂度是O(N)，可以用stl中的make_heap来建堆，而如果用priority_queue没有办法在O(N)复杂度建堆。</p>
+<p>下面是个使用stl中heap相关函数的例子，注意头文件是<strong>&lt; algorithm &gt;</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// range heap example  </div><div class="line">#include &lt;iostream&gt;     // std::cout  </div><div class="line">#include &lt;algorithm&gt;    // std::make_heap, std::pop_heap, std::push_heap, std::sort_heap  </div><div class="line">#include &lt;vector&gt;       // std::vector  </div><div class="line">  </div><div class="line">int main () &#123;  </div><div class="line">  int myints[] = &#123;10,20,30,5,15&#125;;  </div><div class="line">  std::vector&lt;int&gt; v(myints,myints+5);  </div><div class="line">  </div><div class="line">  std::make_heap (v.begin(),v.end());  </div><div class="line">  std::cout &lt;&lt; &quot;initial max heap   : &quot; &lt;&lt; v.front() &lt;&lt; &apos;\n&apos;;  </div><div class="line">  </div><div class="line">  std::pop_heap (v.begin(),v.end()); v.pop_back();  </div><div class="line">  std::cout &lt;&lt; &quot;max heap after pop : &quot; &lt;&lt; v.front() &lt;&lt; &apos;\n&apos;;  </div><div class="line">  </div><div class="line">  v.push_back(99); std::push_heap (v.begin(),v.end());  </div><div class="line">  std::cout &lt;&lt; &quot;max heap after push: &quot; &lt;&lt; v.front() &lt;&lt; &apos;\n&apos;;  </div><div class="line">  </div><div class="line">  std::sort_heap (v.begin(),v.end());  </div><div class="line">  </div><div class="line">  std::cout &lt;&lt; &quot;final sorted range :&quot;;  </div><div class="line">  for (unsigned i=0; i&lt;v.size(); i++)  </div><div class="line">    std::cout &lt;&lt; &apos; &apos; &lt;&lt; v[i];  </div><div class="line">  </div><div class="line">  std::cout &lt;&lt; &apos;\n&apos;;  </div><div class="line">  </div><div class="line">  return 0;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jingcmu.com/2014/09/17/stl里关于heap的函数与priority-queue的区别/" data-id="cixyv6ene0020j0p2v4voz77x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stl/">stl</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-递归的力量" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/17/递归的力量/" class="article-date">
+  <time datetime="2014-09-17T02:54:51.000Z" itemprop="datePublished">2014-09-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/17/递归的力量/">递归的力量</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>递归是一门艺术，越是用的多，越是觉得递归不但威力无穷，还极大的简化的程序的编写。下面就总结一些使用递归简化代码编写难度的例子，代码都来自于准备面试的练习过程。</p>
+<h4 id="1-Swap-Nodes-in-Pairs"><a href="#1-Swap-Nodes-in-Pairs" class="headerlink" title="1. Swap Nodes in Pairs"></a>1. Swap Nodes in Pairs</h4><p>Given a linked list, swap every two adjacent nodes and return its head.</p>
+<p>For example,<br>Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3.</p>
+<p>Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.</p>
+<p>递归代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/** </div><div class="line"> * Definition for singly-linked list. </div><div class="line"> * struct ListNode &#123; </div><div class="line"> *     int val; </div><div class="line"> *     ListNode *next; </div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125; </div><div class="line"> * &#125;; </div><div class="line"> */  </div><div class="line">class Solution &#123;  </div><div class="line">public:  </div><div class="line">    ListNode *swapPairs(ListNode *ptr) &#123;  </div><div class="line">        if(ptr == nullptr || ptr-&gt;next == nullptr) &#123; //base case  </div><div class="line">            return ptr;  </div><div class="line">        &#125;  </div><div class="line">        ListNode *temp = ptr-&gt;next;  </div><div class="line">        ListNode *next = ptr-&gt;next-&gt;next;  </div><div class="line">        temp-&gt;next = ptr;  </div><div class="line">        ptr-&gt;next = swapPairs(next);  </div><div class="line">        return temp;  </div><div class="line">    &#125;  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>可以看出，使用了递归的思考方式之后，代码不需要再考虑比较复杂的边界情况，只需要把子问题当成能够成功处理并返回正确的答案的黑盒子。</p>
+<h4 id="2-另一个经典题目"><a href="#2-另一个经典题目" class="headerlink" title="2.  另一个经典题目."></a>2.  另一个经典题目.</h4><p>一个哥们面试google的时候还碰到，很简单，但是迭代很不容易做到一次bug free，但是用递归就容易多了。</p>
+<p>递归代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ListNode * ReverseList( ListNode * ptr, ListNode *last)  </div><div class="line">&#123;  </div><div class="line">   if(ptr == nullptr) return last;  </div><div class="line">   ListNode *next = ptr-&gt;next;  </div><div class="line">   ptr-&gt;next = last;  </div><div class="line">   return ReverseList(next, ptr);  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对比迭代的解法（这已经是非常好的写法了，写迭代时你会发现需要考虑边界情况，需要担心指针会不会非法操作，一堆的事！）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ListNode * ReverseList1( ListNode * ptr )  </div><div class="line">&#123;  </div><div class="line">    ListNode * temp;  </div><div class="line">    ListNode * previous = NULL;  </div><div class="line">    while(ptr != NULL) &#123;  </div><div class="line">        temp = ptr-&gt;next;  </div><div class="line">        ptr-&gt;next = previous;  </div><div class="line">        previous = ptr;  </div><div class="line">        ptr = temp;  </div><div class="line">    &#125;  </div><div class="line">    return previous;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="3-Reverse-Nodes-in-k-Group"><a href="#3-Reverse-Nodes-in-k-Group" class="headerlink" title="3. Reverse Nodes in k-Group"></a>3. Reverse Nodes in k-Group</h4><p>For example,<br>Given this linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5</p>
+<p>For k = 2, you should return: 2-&gt;1-&gt;4-&gt;3-&gt;5</p>
+<p>For k = 3, you should return: 3-&gt;2-&gt;1-&gt;5-&gt;4</p>
+<p>递归代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">ListNode *reverseKGroup(ListNode *head, int k) &#123;  </div><div class="line">    if(head == nullptr || head-&gt;next == nullptr|| k == 1) return head;  </div><div class="line">    ListNode *pre = head, *ptr = head-&gt;next, *next;  </div><div class="line">    for(int i=1; i&lt;k &amp;&amp; ptr!=nullptr; i++) &#123;  </div><div class="line">        next = ptr-&gt;next;  </div><div class="line">        ptr-&gt;next = pre;  </div><div class="line">        pre = ptr;  </div><div class="line">        ptr = next;  </div><div class="line">    &#125;  </div><div class="line">    head-&gt;next = reverseKGroup(ptr, k);  </div><div class="line">    return pre;  </div><div class="line">&#125;</div><div class="line">```  </div><div class="line">这题如果不用递归，相当不好写的。</div><div class="line"></div><div class="line">#### 4. 二分查找的递归实现和非递归实现比较</div><div class="line"></div><div class="line">递归解法：</div></pre></td></tr></table></figure></p>
+<p>int binary_search(int* array, int start, int end, int num_wanted)<br>{<br>    int middle = (end - start)/2 + start; // a<br>    if(end &lt; start){<br>        return -1;<br>    }else if(num_wanted == array[middle]){<br>        return middle;<br>    }    </p>
+<pre><code>int index;    
+if(num_wanted &gt; array[middle]){    
+    index = binary_search(array, middle+1, end, num_wanted); // b    
+}else{    
+    index = binary_search(array, start, middle-1, num_wanted); // c    
+}    
+return index; // d    
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">在编写的时候，基于4个原则：</div><div class="line">a. 找基准情况：</div><div class="line"></div><div class="line">基准情况就是递归的终止条件，通常不难确定</div><div class="line"></div><div class="line">b. 不断演进，找到问题的规模更小的子问题，可能需要考虑很多限制条件</div><div class="line"></div><div class="line">c. 不要去考虑子问题是如何工作的，假设子问题通过递归调用能过正确解决</div><div class="line"></div><div class="line">d. 不要做重复的递归，譬如斐波那契数列中，f(n) = f(n-1) + f(n-2) 每次调用会增加额外两次调用，复杂度是O(2^N)</div><div class="line"></div><div class="line">### 尾递归问题</div><div class="line"></div><div class="line">二分查找的递归算法中，递归调用之后仅仅是返回了其返回值，这样的递归可以被写成尾递归的形式。事实上，递归调用过程可以分为递和归两个阶段，往下走叫递，往上走叫归，尾递归在归的过程中实际上不做任何事情（因此尾递归是可以很方便的转化成非递归程序）。上面的代码还不是尾递归形式，其尾递归形式为：</div></pre></td></tr></table></figure></p>
+<p>int binary_search(int* array, int start, int end, int num_wanted)<br>{<br>    int middle = (end - start)/2 + start; // a<br>    if(end &lt; start){<br>        return -1;<br>    }else if(num_wanted == array[middle]){<br>        return middle;<br>    }    </p>
+<pre><code>if(num_wanted &gt; array[middle]){    
+   return binary_search(array, middle+1, end, num_wanted); // b    
+} else{    
+   return binary_search(array, start, middle-1, num_wanted); // c    
+}    
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 尾递归的定义：</div><div class="line">函数所做的最后一件事情是一个函数调用（递归或非递归的），被称为尾部调用（tail-call），使用尾部调用的递归称为尾递归。要使调用称为真正的尾部调用，在尾部调用的函数返回前，对其结果不能执行任何其他操作。而由于在函数中不再做任何事情，那个函数的实际的栈结构也就不需要了，唯一的问题是，很多程序设计语言和编译器不知道如何除去没有用的栈结构。如果我们能找到一个除去这些不需要的栈结构的方法，那么我们的尾部递归函数就可以在固定大小的栈中运行。</div><div class="line"></div><div class="line">### 尾部调用优化</div><div class="line"></div><div class="line">在尾部调用之后除去栈结构的方法称为尾部调用优化。这种优化可以通过询问几个问题来回答：</div><div class="line"></div><div class="line">a. 函数在尾部被调用之后，还需要使用哪个本地变量？哪个也不需要</div><div class="line"></div><div class="line">b. 会对返回值做什么处理？什么处理也不做</div><div class="line"></div><div class="line">c. 传递到函数的哪个参数将会被使用？哪个也不使用</div><div class="line"></div><div class="line">好像一旦控制权传递给了尾部调用的函数，栈中就再也没有有用的内容了，虽然还占据着空间，但函数的栈结构已经事实上没用了，因此尾部调用优化就是在尾部进行函数调用的时候，使用下一个栈结构覆盖当前的栈结构，同时保持原来的返回地址。</div><div class="line"></div><div class="line">因此尾部调用优化的本质是对栈进行处理，再也不需要活动记录，所以可以删掉，并将尾部调用的函数重定向返回到调用我们的函数。这意味着我们必须手工重新编写栈来仿照一个返回地址，以使得尾部调用的函数能直接返回到调用它的函数。</div><div class="line"></div><div class="line">### 尾递归优化</div><div class="line"></div><div class="line">当函数在尾部调用中调用自己时，方法更为简单。我们只需要将参数的新值移到旧值之上，然后在本地变量保存到栈上之后立即进行一个到函数中位置的跳转。 由于我们只是跳转到同一个函数，所以返回地址和旧的是相同的，栈的大小也不会改变。 因此，在跳转之前我们要做的惟一一件事情就是使用新的参数取代旧的参数。</div><div class="line"></div><div class="line">### GCC的尾递归（尾部调用）优化</div><div class="line"></div><div class="line">GCC只要打开-O2就可以支持尾部调用优化，因为-O2会打开-foptimize-sibling-calls 选项</div><div class="line"></div><div class="line">下面是我以前写的一个非递归的模板实现：</div></pre></td></tr></table></figure></p>
+<p>template <class bidirectioniterator,="" class="" t=""><br>BidirectionIterator binary_search(BidirectionIterator begin, BidirectionIterator end, T target) {<br>    BidirectionIterator mid, end_reserve = end, last_mid;<br>    mid = begin + (end-begin)/2;<br>    while(begin != end &amp;&amp; mid != last_mid) {<br>        if(<em>mid == target) {<br>            return mid;<br>        }<br>        else if(</em>mid &gt; target) {<br>            end = mid;<br>            mid = begin + (end-begin)/2;<br>        }<br>        else {<br>            begin = mid;<br>            mid = begin + (end-begin)/2;<br>        }<br>        last_mid = mid;<br>    }<br>    return end_reserve;<br>}<br>```</class></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jingcmu.com/2014/09/17/递归的力量/" data-id="cixyv6eon0058j0p2yr19zoci" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-每个码农都应该知道的数字" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/17/每个码农都应该知道的数字/" class="article-date">
+  <time datetime="2014-09-17T01:45:36.000Z" itemprop="datePublished">2014-09-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/17/每个码农都应该知道的数字/">每个码农都应该知道的数字</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>L1 cache reference: 0.5 ns</li>
+<li>Branch mispredict: 5 ns</li>
+<li>L2 cache reference: 7 ns</li>
+<li>Mutex lock/unlock: 100 ns</li>
+<li>Main memory reference: 100 ns</li>
+<li>Compress 1K bytes with Zippy: 10,000 ns</li>
+<li>Send 2K bytes over 1 Gbps network: 20,000 ns</li>
+<li>Read 1 MB sequentially from memory: 250,000 ns</li>
+<li>Round trip within same datacenter: 500,000 ns</li>
+<li>Disk seek: 10,000,000 ns</li>
+<li>Read 1 MB sequentially from network: 10,000,000 ns</li>
+<li>Read 1 MB sequentially from disk: 30,000,000 ns</li>
+<li>Send packet CA-&gt;Netherlands-&gt;CA: 150,000,000 ns</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jingcmu.com/2014/09/17/每个码农都应该知道的数字/" data-id="cixyv6eoi004sj0p2j82jkn0o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-会议室太坑爹了！" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/17/会议室太坑爹了！/" class="article-date">
+  <time datetime="2014-09-16T22:11:39.000Z" itemprop="datePublished">2014-09-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/日记/">日记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/17/会议室太坑爹了！/">会议室太坑爹了！</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天是第二天睡公司，昨天没睡好还情有可原，今天实在是让我郁闷了。<br>主要是被会议室的灯给坑了。一直没发现，大会议的灯不关是有原因的，因为无论你怎么关，半小时后就自动打开到最亮的亮度。也是我太迟钝，反复几次才发觉这个问题（开始我以为是我动了灯才会亮），结果从3点钟就开始没有睡意了。<br>睡会议室还有个缺点，墨西哥大叔大妈半夜要清扫会议室，睡在里面总担心他们会进来。现在纠结是不是开始睡在对面的实验室里面，暂时里面还没有人，也没有仪器，但是因为是玻璃墙，所以里面还是蛮亮的，可能需要买个眼罩。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jingcmu.com/2014/09/17/会议室太坑爹了！/" data-id="cixyv6ent0032j0p2iastwikk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/郁闷/">郁闷</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-14-numbers-every-developer-should-know" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/17/14-numbers-every-developer-should-know/" class="article-date">
+  <time datetime="2014-09-16T21:01:41.000Z" itemprop="datePublished">2014-09-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/17/14-numbers-every-developer-should-know/">14 numbers every developer should know</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Jeff Dean , a famous Google engineer, popularized a list of latency numbers everyone should know. The list is a great resource for designing large scale infrastructure systems.</p>
+<p>Algorithms and their complexity often occur in critical parts of computer systems, but I find that few engineers have a good understanding of how a O(n!) algorithm compares to a O(n5) one.</p>
+<p>In the coding contest world, competitors think about these tradeoffs all the time. No wonder, there’s a set of numbers every algorithm designer should know.</p>
+<p>The table below shows the limits that can be reached in a few seconds by algorithms of different complexities, n being the input size. I’ve added some algorithms and data structure examples for each complexity class.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">maximum n</th>
+<th style="text-align:center">complexity</th>
+<th style="text-align:center">algorithms</th>
+<th style="text-align:right">data structures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1,000,000,000 and higher</td>
+<td style="text-align:center">log n, sqrt n</td>
+<td style="text-align:center">binary search, ternary search, fast exponentiation, euclid algorithm</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td style="text-align:left">10,000,000</td>
+<td style="text-align:center">n, n log log n, n log* n</td>
+<td style="text-align:center">set intersection, Eratosthenes sieve, radix sort, KMP, topological sort, Euler tour, strongly connected components, 2sat</td>
+<td style="text-align:right">disjoint sets, tries, hash_map, rolling hashdeque</td>
+</tr>
+<tr>
+<td style="text-align:left">1,000,000</td>
+<td style="text-align:center">n log n</td>
+<td style="text-align:center">sorting, divide and conquer, sweep line, Kruskal, Dijkstra</td>
+<td style="text-align:right">segment trees, range trees, heaps, treaps, binary indexed trees, suffix arrays</td>
+</tr>
+<tr>
+<td style="text-align:left">100,000</td>
+<td style="text-align:center">n log<sup>2</sup> n</td>
+<td style="text-align:center">divide and conquer</td>
+<td style="text-align:right">2d range trees</td>
+</tr>
+<tr>
+<td style="text-align:left">50,000</td>
+<td style="text-align:center">n<sup>1.585</sup>, n sqrt n</td>
+<td style="text-align:center">Karatsuba, square root trick</td>
+<td style="text-align:right">two level tree</td>
+</tr>
+<tr>
+<td style="text-align:left">1000 - 10,000</td>
+<td style="text-align:center">n<sup>2</sup></td>
+<td style="text-align:center">largest empty rectangle, Dijkstra, Prim (on dense graphs)</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td style="text-align:left">300-500</td>
+<td style="text-align:center">n<sup>3</sup></td>
+<td style="text-align:center">all pairs shortest paths, largest sum submatrix, naive matrix multiplication, matrix chain multiplication, gaussian elimination, network flow</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td style="text-align:left">30-50</td>
+<td style="text-align:center">n<sup>4</sup>, n<sup>5</sup>, n<sup>6</sup></td>
+</tr>
+<tr>
+<td style="text-align:left">25 - 40</td>
+<td style="text-align:center">3<sup>n/2</sup>, 2<sup>n/2</sup></td>
+<td style="text-align:center">meet in the middle</td>
+<td style="text-align:right">hash tables (for set intersection)</td>
+</tr>
+<tr>
+<td style="text-align:left">15 - 24</td>
+<td style="text-align:center">2<sup>n</sup></td>
+<td style="text-align:center">subset enumeration, brute force, dynamic programming with exponential states</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td style="text-align:left">15 - 20</td>
+<td style="text-align:center">n<sup>2</sup> 2<sup>n</sup></td>
+<td style="text-align:center">dynamic programming with exponential states</td>
+<td style="text-align:right">bitsets, hash_map</td>
+</tr>
+<tr>
+<td style="text-align:left">13-17</td>
+<td style="text-align:center">3<sup>n</sup></td>
+<td style="text-align:center">dynamic programming with exponential states</td>
+<td style="text-align:right">hash_map (to store the states)</td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:center">n!</td>
+<td style="text-align:center">brute force, backtracking, next_permutation</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:center">n<sup>n</sup></td>
+<td style="text-align:center">brute force, cartesian product</td>
+</tr>
+</tbody>
+</table>
+<p>These numbers aren’t very precise, they assume in memory operations and some varying constant factors, but they do give a good starting point in your search for a solution that fits your problem and your data size.</p>
+<p>Let’s go through an example.</p>
+<p>Suppose you work for a GPS company and your project is to improve their directions feature. In school you’ve learned about using Dijkstra’s algorithm to find the shortest path between two nodes in a graph. Knowing these numbers you will understand that it will take seconds to process a graph with millions of edges given that Dijkstra implementations have m log n time complexity (where m is the number of edges and n the number of nodes).</p>
+<p>Now you face a few questions:</p>
+<p>How fast do you want your code to be? seconds? hundreds of milliseconds?</p>
+<p>A response on the web feels fast if it takes less then 500 milliseconds. So let’s pick half a second.</p>
+<p>How big is the graph? Do you want to solve the problem for a city, a coutry or even a continent?</p>
+<p>Each is about a magnitude larger than the other and will be solved by different approaches. Let’s say we want to solve the problem for the whole of Europe.</p>
+<p>Here are sizes for a few input sets:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">input</th>
+<th style="text-align:left">Europe</th>
+<th style="text-align:left">USA/CAN</th>
+<th style="text-align:left">USA (Tiger)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">#nodes</td>
+<td style="text-align:left">18 029 721</td>
+<td style="text-align:left">18 741 705</td>
+<td style="text-align:left">24 278 285</td>
+</tr>
+<tr>
+<td style="text-align:left">#directed edges</td>
+<td style="text-align:left">42 199 587</td>
+<td style="text-align:left">47 244 849</td>
+<td style="text-align:left">58 213 192</td>
+</tr>
+<tr>
+<td style="text-align:left">#road categories</td>
+<td style="text-align:left">13</td>
+<td style="text-align:left">13</td>
+<td style="text-align:left">4</td>
+</tr>
+</tbody>
+</table>
+<p>Since we chose half a second to be our execution time and the size of our problem to be about 40 million edges it’s clear from our table that m log n is too slow. So pure Dijkstra won’t do. We need to look at how other algorithms like A star search or one based on Highway hierarchies behave for this problem.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jingcmu.com/2014/09/17/14-numbers-every-developer-should-know/" data-id="cixyv6emg0007j0p2s37poulj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-黑粗翔了！JeffDean的牛逼之处" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/16/黑粗翔了！JeffDean的牛逼之处/" class="article-date">
+  <time datetime="2014-09-16T14:03:35.000Z" itemprop="datePublished">2014-09-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/16/黑粗翔了！JeffDean的牛逼之处/">黑粗翔了！JeffDean的牛逼之处</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>关于<a href="http://research.google.com/people/jeff/" target="_blank" rel="external">Jeff Dean</a>，简单来说，这货是Google牛逼的源泉之一。因为此人实在太牛了，于是出现了关于他有多牛的几个笑话，直接笑翻，和大家共享下。</p>
+<ul>
+<li>During his own Google interview, Jeff Dean was asked the  implications if P=NP were true.  He said, “P = 0 or N = 1.” Then, before  the interviewer had even finished laughing, Jeff examined Google’s  public certificate and wrote the private key on the whiteboard.</li>
+</ul>
+<p>当他被Google面试时，Jeff Dean被问及如果P=NP意味着什么。他说，“P=0 或者 N=1”。然后，在所有的面试官还没笑完之前，Jeff瞄了一眼Google的公共证书然后在白板上写上了对应的私钥。</p>
+<ul>
+<li>Compilers don’t warn Jeff Dean.   Jeff Dean warns compilers.</li>
+</ul>
+<p>编译器从来不给Jeff编译警告，而是Jeff警告编译器</p>
+<ul>
+<li>The rate at which Jeff Dean produces code jumped by a factor of 40  in late 2000 when he upgraded his keyboard to USB 2.0.</li>
+</ul>
+<p>在2000年后段，Jeff码代码的速度突然激增了40倍，原因是他把自己的键盘升级到了USB 2.0</p>
+<ul>
+<li>Jeff Dean builds his code before committing it, but only to check for compiler and linker bugs.</li>
+</ul>
+<p>Jeff还是会在提交代码前把它们编译一遍，不过这么做的目的只是为了检查下编译器和链接器有没有bug</p>
+<ul>
+<li>All pointers point to Jeff Dean.</li>
+</ul>
+<p>所有指针都是指向Jeff的</p>
+<ul>
+<li>gcc -O4 emails your code to Jeff Dean for a rewrite.</li>
+</ul>
+<p>gcc的-O4优化选项是将你的代码邮件给Jeff重写一下</p>
+<ul>
+<li>The speed of light in a vacuum used to be about 35 mph. Then Jeff Dean spent a weekend optimizing physics.</li>
+</ul>
+<p>光在真空中的速度曾近是35英里每小时，后来Jeff花了一个周末对物理学进行了小小的优化</p>
+<ul>
+<li>Jeff Dean was born on December 31, 1969 at 11:48 PM. It took him twelve minutes to implement his first time counter.</li>
+</ul>
+<p>Jeff出生于1969年12月31日的下午11点48分，然后他花了整整12分钟的时间实现了他的第一个计时器。（背景：计算机中的计时器数值通常被设计为从1970年1月1日0点0分0秒到当前为止的秒数）</p>
+<ul>
+<li>When Jeff Dean sends an ethernet frame there are no collisions because the competing frames retreat back up into the buffer memory on their source nic.</li>
+</ul>
+<p>当Jeff向以太网发送一个数据包时从来不会有冲突，原因是本来要和它有冲突的包都默默撤回了缓冲区</p>
+<ul>
+<li>Unsatisfied with constant time, Jeff Dean created the world’s first O(1/n)algorithm.</li>
+</ul>
+<p>Jeff对常量的时间复杂度并不满足，于是他创造了世界上第一个O(1/n)的算法。（即随着问题规模的增大，其解决问题所花的时间会越短）</p>
+<ul>
+<li>Jeff Dean was forced to invent asynchronous APIs one day when he optimized a function so that it returned before it was invoked.</li>
+</ul>
+<p>Jeff曾被迫发明了异步API，原因是经他优化后的某个函数会在调用开始前返回</p>
+<ul>
+<li>When Jeff Dean designs software, he first codes the binary and then writes the source as documentation.</li>
+</ul>
+<p>当Jeff写软件时，他是直接码机器码的。写源代码只是为了作为文档使用。</p>
+<ul>
+<li>Jeff Dean wrote an O(n^2) algorithm once. It was for the Traveling Salesman Problem.</li>
+</ul>
+<p>Jeff曾无奈写过一次O(n^2)的算法，其解决的问题是旅行商问题。（该问题是NPC的，即计算机中最复杂最难解决的一类问题，许多人相信这些问题是没有多项式时间复杂度的解的）</p>
+<ul>
+<li>Jeff Dean can beat you at connect four. In three moves.</li>
+</ul>
+<p>Jeff在四子连珠的游戏中能赢你，在三步内</p>
+<ul>
+<li>When your code has undefined behavior, you get a seg fault and corrupted data. When Jeff Dean’s code has undefined behavior, a unicorn rides in on a rainbow and gives everybody free ice cream.</li>
+</ul>
+<p>当你的代码有不确定行为时，你通常得到一个段错误或者不正确的数据。当Jeff的代码有不确定行为时，孙悟空会驾着七彩云朵给每个人发免费的长寿仙桃</p>
+<ul>
+<li>When Jeff Dean fires up the profiler, loops unroll themselves in fear.</li>
+</ul>
+<p>当Jeff触发程序的程序性能采样时，循环会因害怕而自动展开。</p>
+<ul>
+<li>Jeff Dean is still waiting for mathematicians to discover the joke he hid in the digits of PI.</li>
+</ul>
+<p>Jeff依然孤独地等待着数学家们解开他在PI的数字中隐藏的笑话</p>
+<ul>
+<li>Jeff Dean’s keyboard has two keys: 1 and 0.</li>
+</ul>
+<p>Jeff的键盘多达两个键：1和0</p>
+<ul>
+<li>When Jeff has trouble sleeping, he Mapreduces sheep.</li>
+</ul>
+<p>当Jeff失眠时，他Mapreduce羊群。（Mapreduce是Jeff的作品之一，这个分布式处理的框架算法是Google立足的根本之一）</p>
+<ul>
+<li>When Jeff Dean listens to mp3s, he just cats them to /dev/dsp and does the decoding in his head.</li>
+</ul>
+<p>当Jeff听MP3时，他查看其中的二进制内容然后在他脑子里进行音频解码。</p>
+<ul>
+<li>When Graham Bell invented the telephone, he saw a missed call from Jeff Dean.</li>
+</ul>
+<p>当贝爷在沙漠中逮到一个手机时，他发现手机里有个Jeff的未接来电。</p>
+<p>当贝尔发明电话后，他发现电话里有个Jeff的未接来电。</p>
+<ul>
+<li>Jeff Dean’s watch displays seconds since January 1st, 1970. He is never late.</li>
+</ul>
+<p>Jeff的手表显示的数字是自1970年1月1日0点0分0秒以来的秒数，他因此从来不迟到。</p>
+<ul>
+<li>Jeff starts his programming sessions with ‘cat &gt; /dev/mem’.</li>
+</ul>
+<p>Jeff在开始编程之前，会做’cat &gt; /dev/mem’。（即把输入的内容直接导到内存中）</p>
+<ul>
+<li>One day Jeff Dean grabbed his Etch-a-Sketch instead of his laptop on his way out the door. On his way back home to get his real laptop, he programmed the Etch-a-Sketch to play Tetris.</li>
+</ul>
+<p>有一次Jeff出门时错将草图画板当笔记本拿了。结果在他回家取笔记本的路上，他对画板进行了重编程以在其上玩俄罗斯方块</p>
+<ul>
+<li>Google search went down for a few hours in 2002, and Jeff Dean started handling queries by hand. Search Quality doubled.</li>
+</ul>
+<p>在2002年，Google搜索曾挂了几个小时，于是Jeff站出来手动处理用户的查询请求。搜索准确度翻了番</p>
+<ul>
+<li>The x86-64 spec includes several undocumented instructions marked ‘private use’. They are actually for Jeff Dean’s use.</li>
+</ul>
+<p>x86-64指令集中有一些没有被记入到文档的‘私用’指令。事实上，他们是给Jeff用的</p>
+<ul>
+<li>mantri@mantri-laptop~$  rm -r /<br>  rm: cannot remove root directory ‘/’ </li>
+</ul>
+<p>mantri@mantri-laptop~$ su - jeffdean -c “rm -r /“<br>    I am extremely sorry. Removing root directory…</p>
+<p>不解释</p>
+<ul>
+<li>Jeff Dean once shifted a bit so hard, it ended up on another computer.</li>
+</ul>
+<p>有次Jeff移位移得太恨了，结果那一位跑到另一台计算机上去了</p>
+<ul>
+<li>Jeff Dean has gone to /dev/null and come back.</li>
+</ul>
+<p>Jeff从/dev/null那涅槃了。（庞统啊~）</p>
+<p>Jeff又从/dev/null那涅槃了。（擦！）</p>
+<ul>
+<li>Jeff Dean sorts his phone contacts by their vcard’s md5 checksums.</li>
+</ul>
+<p>Jeff通讯录的排序规则是按照联系人的md5值</p>
+<ul>
+<li>Jeff Dean doesn’t kill processes, he slays them.</li>
+</ul>
+<p>Jeff他不杀进程，他肢解虐杀它们</p>
+<ul>
+<li>The needle in haystack found Jeff Dean</li>
+</ul>
+<p>海底的针会自己找上Jeff</p>
+<ul>
+<li>All of the Google App Engine is actually hosted from Jeff Dean’s Nexus S</li>
+</ul>
+<p>Google App Engine的服务器实际上是Jeff的Nexus S</p>
+<ul>
+<li>Jeff Deans’s keyboard doesn’t have a Ctrl key because nothing controls Jeff Dean.</li>
+</ul>
+<p>Jeff的键盘压根就没有Ctrl(控制)键，因为没有什么东西能控制Jeff</p>
+<ul>
+<li>You name three pointers, Einstein, Euler, and Turing, when you de-reference them, all you get is Jeff Dean.</li>
+</ul>
+<p>如果你命名三个指针分别为爱因斯坦、欧拉和图灵，当你查看它们的指向时，你看到的都会是Jeff</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jingcmu.com/2014/09/16/黑粗翔了！JeffDean的牛逼之处/" data-id="cixyv6eop005fj0p2show4uvt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Google/">Google</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搞笑/">搞笑</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-开源License对比分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/16/开源License对比分析/" class="article-date">
+  <time datetime="2014-09-16T08:28:24.000Z" itemprop="datePublished">2014-09-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/16/开源License对比分析/">开源License对比分析(转)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>BSD开源协议（original BSD license、FreeBSD license、Original BSD license）<br>BSD开源协议是一个给于使用者很大自由的协议。基本上使用者可以”为所欲为”,可以自由的使用，修改源代码，也可以将修改后的代码作为开源或者专有软件再发布。<br>但”为所欲为”的前提当你发布使用了BSD协议的代码，或则以BSD协议代码为基础做二次开发自己的产品时，需要满足三个条件：</p>
+<ol>
+<li>如果再发布的产品中包含源代码，则在源代码中必须带有原来代码中的BSD协议。</li>
+<li>如果再发布的只是二进制类库/软件，则需要在类库/软件的文档和版权声明中包含原来代码中的BSD协议。</li>
+<li>不可以用开源代码的作者/机构名字和原来产品的名字做市场推广。<br>BSD 代码鼓励代码共享，但需要尊重代码作者的著作权。BSD由于允许使用者修改和重新发布代码，也允许使用或在BSD代码上开发商业软件发布和销售，因此是对商业集成很友好的协议。而很多的公司企业在选用开源产品的时候都首选BSD协议，因为可以完全控制这些第三方的代码，在必要的时候可以修改或者二次开发。</li>
+</ol>
+<p>Apache Licence 2.0（Apache License, Version 2.0、Apache License, Version 1.1、Apache License, Version 1.0）<br>Apache Licence是著名的非盈利开源组织Apache采用的协议。该协议和BSD类似，同样鼓励代码共享和尊重原作者的著作权，同样允许代码修改，再发布（作为开源或商业软件）。需要满足的条件也和BSD类似：</p>
+<ol>
+<li>需要给代码的用户一份Apache Licence</li>
+<li>如果你修改了代码，需要再被修改的文件中说明。</li>
+<li>在延伸的代码中（修改和有源代码衍生的代码中）需要带有原来代码中的协议，商标，专利声明和其他原来作者规定需要包含的说明。</li>
+<li>如果再发布的产品中包含一个Notice文件，则在Notice文件中需要带有Apache Licence。你可以在Notice中增加自己的许可，但不可以表现为对Apache Licence构成更改。<br>Apache Licence也是对商业应用友好的许可。使用者也可以在需要的时候修改代码来满足需要并作为开源或商业产品发布/销售。</li>
+</ol>
+<p>GPL（GNU General Public License）<br>Linux就是采用了GPL。GPL协议和BSD, Apache Licence等鼓励代码重用的许可很不一样。GPL的出发点是代码的开源/免费使用和引用/修改/衍生代码的开源/免费使用，但不允许修改后和衍生的代码做为闭源的商业软件发布和销售。这也就是为什么我们能用免费的各种linux，包括商业公司的linux和linux上各种各样的由个人，组织，以及商业软件公司开发的免费软件了。<br>GPL协议的主要内容是只要在一个软件中使用(“使用”指类库引用，修改后的代码或者衍生代码)GPL 协议的产品，则该软件产品必须也采用GPL协议，既必须也是开源和免费。这就是所谓的”GPL传染性”。GPL协议的产品作为一个单独的产品使用没有任何问题，还可以享受免费的优势。<br>由于GPL严格要求使用了GPL类库的软件产品必须使用GPL协议，对于使用GPL协议的开源代码，商业软件或者对代码有保密要求的部门就不适合集成/采用作为类库和二次开发的基础。<br>其它细节如再发布的时候需要伴随GPL协议等和BSD/Apache等类似。</p>
+<p>LGPL（GNU Lesser General Public License）<br>LGPL是GPL的一个为主要为类库使用设计的开源协议。和GPL要求任何使用/修改/衍生之GPL类库的的软件必须采用GPL协议不同。LGPL允许商业软件通过类库引用(link)方式使用LGPL类库而不需要开源商业软件的代码。这使得采用LGPL协议的开源代码可以被商业软件作为类库引用并发布和销售。<br>但是如果修改LGPL协议的代码或者衍生，则所有修改的代码，涉及修改部分的额外代码和衍生的代码都必须采用LGPL协议。因此LGPL协议的开源代码很适合作为第三方类库被商业软件引用，但不适合希望以LGPL协议代码为基础，通过修改和衍生的方式做二次开发的商业软件采用。<br>GPL/LGPL都保障原作者的知识产权，避免有人利用开源代码复制并开发类似的产品</p>
+<p>MIT<br>MIT是和BSD一样宽范的许可协议,作者只想保留版权,而无任何其他了限制.也就是说,你必须在你的发行版里包含原许可协议的声明,无论你是以二进制发布的还是以源代码发布的.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jingcmu.com/2014/09/16/开源License对比分析/" data-id="cixyv6eo70043j0p2b5e8pkbb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/others/">others</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/say/">say</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/古文观止/">古文观止</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作总结/">工作总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心理学/">心理学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/照片-视频/">照片/视频</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/科技界/">科技界</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运动/">运动</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Alfred/">Alfred</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MacOS/">MacOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sundy/">Sundy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPX/">VPX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebRTC/">WebRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/others/">others</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/">stl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal/">terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webRTC/">webRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/你该知道的/">你该知道的</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开心/">开心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感人/">感人</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搞笑/">搞笑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活哲学/">生活哲学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网球/">网球</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美食/">美食</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/肌肉/">肌肉</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/荀子/">荀子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/说说/">说说</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/郁闷/">郁闷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Alfred/" style="font-size: 10px;">Alfred</a> <a href="/tags/C-C/" style="font-size: 12px;">C/C++</a> <a href="/tags/Google/" style="font-size: 18px;">Google</a> <a href="/tags/MacOS/" style="font-size: 16px;">MacOS</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Sundy/" style="font-size: 14px;">Sundy</a> <a href="/tags/VPX/" style="font-size: 14px;">VPX</a> <a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/others/" style="font-size: 10px;">others</a> <a href="/tags/stl/" style="font-size: 10px;">stl</a> <a href="/tags/terminal/" style="font-size: 16px;">terminal</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/webRTC/" style="font-size: 12px;">webRTC</a> <a href="/tags/你该知道的/" style="font-size: 12px;">你该知道的</a> <a href="/tags/动态规划/" style="font-size: 14px;">动态规划</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开心/" style="font-size: 12px;">开心</a> <a href="/tags/感人/" style="font-size: 10px;">感人</a> <a href="/tags/搞笑/" style="font-size: 12px;">搞笑</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/生活哲学/" style="font-size: 12px;">生活哲学</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/网球/" style="font-size: 10px;">网球</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/肌肉/" style="font-size: 10px;">肌肉</a> <a href="/tags/荀子/" style="font-size: 10px;">荀子</a> <a href="/tags/说说/" style="font-size: 10px;">说说</a> <a href="/tags/郁闷/" style="font-size: 10px;">郁闷</a> <a href="/tags/面试/" style="font-size: 12px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/01/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/13/WebM-技术探秘-VP8的候补参考帧-译/">WebM 技术探秘- VP8的候补参考帧(译)</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/03/-LeetCode新题-Excel-Sheet-Column-Title/">[LeetCode新题] Excel Sheet Column Title</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/03/-LeetCode新题-Intersection-of-Two-Linked-Lists/">[LeetCode新题]Intersection of Two Linked Lists</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/03/一个简单的面试题/">一个简单的面试题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

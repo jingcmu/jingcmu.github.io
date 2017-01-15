@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>时间戳问题汇总(转) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="我刚接触流媒体不久， 现在遇到一个非常奇怪的问题，向各位大侠请假，请你们指点。问题是这样的 用一个 VLC(流媒体客户端) 去请求流媒体服务器上的数据， 但是获得的数据播放速度明显快于1倍速，大概是 timestamp 不对，不知道是服务器的错误，还是客户端解码时出错， 总感觉服务器那边有问题， 由于服务器端是客户端提供的，客户说是我们的问题，我还不知道如何证明是谁的错。
+A:RFC3984 规定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时间戳问题汇总(转)">
+<meta property="og:url" content="http://jingcmu.com/2014/10/15/时间戳问题汇总-转/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="我刚接触流媒体不久， 现在遇到一个非常奇怪的问题，向各位大侠请假，请你们指点。问题是这样的 用一个 VLC(流媒体客户端) 去请求流媒体服务器上的数据， 但是获得的数据播放速度明显快于1倍速，大概是 timestamp 不对，不知道是服务器的错误，还是客户端解码时出错， 总感觉服务器那边有问题， 由于服务器端是客户端提供的，客户说是我们的问题，我还不知道如何证明是谁的错。
+A:RFC3984 规定">
+<meta property="og:updated_time" content="2014-10-16T00:06:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="时间戳问题汇总(转)">
+<meta name="twitter:description" content="我刚接触流媒体不久， 现在遇到一个非常奇怪的问题，向各位大侠请假，请你们指点。问题是这样的 用一个 VLC(流媒体客户端) 去请求流媒体服务器上的数据， 但是获得的数据播放速度明显快于1倍速，大概是 timestamp 不对，不知道是服务器的错误，还是客户端解码时出错， 总感觉服务器那边有问题， 由于服务器端是客户端提供的，客户说是我们的问题，我还不知道如何证明是谁的错。
+A:RFC3984 规定">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://jingcmu.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-时间戳问题汇总-转" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/15/时间戳问题汇总-转/" class="article-date">
+  <time datetime="2014-10-15T08:54:03.000Z" itemprop="datePublished">2014-10-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      时间戳问题汇总(转)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我刚接触流媒体不久， 现在遇到一个非常奇怪的问题，向各位大侠请假，请你们指点。<br>问题是这样的 用一个 VLC(流媒体客户端) 去请求流媒体服务器上的数据， 但是获得的数据播放速度明显快于1倍速，大概是 timestamp 不对，不知道是服务器的错误，还是客户端解码时出错， 总感觉服务器那边有问题， 由于服务器端是客户端提供的，客户说是我们的问题，我还不知道如何证明是谁的错。</p>
+<p>A:RFC3984 规定采用 <strong>90000 Hz</strong> 的时钟，因此如果编码帧频是 30，那么时间戳间隔就该是 90000 / 30 = 3000，根据抓包来看，似乎时间戳间隔的确是 3000。</p>
+<p>时间戳的 间隔不固定，比如有的时间戳间隔是 2990 有的是 3002，会导致解析出来的视频快播的效果么</p>
+<p>Q：各位大侠好：<br>我现在正在开发视频实时流播放，简单的过程如下：<br>采集视频流 -&gt; 视频流转换为Sorenson H.263编码格式   -&gt; 把编码的实时流通过RTMP协议发送 -&gt; flash客户端进行播放。<br>现在我的时间戳颗粒是这样生成的：<br>第一帧的时间戳为0；<br>第二帧的时间戳的算法为：第一个字符编码的当前时间 - 上一帧第一个字符编码的当前时间<br>根据这个时间颗粒的算法，我在flash客户端播放就会产生延时。<br>请问各位大侠有什么好的建议或是文档之类的，以前firstime管管建议我看RFC4629文档，但是效果不太明显？<br>谢谢！</p>
+<p>A；时间戳顺序累加就行了，每次加1</p>
+<p>Q:最近做了一个捕捉摄像头并保存FLV的小东西，发现转换完毕后的FLV文件，用播放器播放的时候，速度特别快，大概是正常速度的4倍。请问这是怎么回事？网上搜了一下，说是时间戳的问题，可是PTS我跟了，AVPacket的PTS是每帧增长40，time_base为: 25/s.。DTS是个无效值。PTS的计算是根据ffmpeg的例子写的。<br>pkt.pts= av_rescale_q(oAcc-&gt;coded_frame-&gt;pts, oAcc-&gt;time_base, audio_st-&gt;time_base);</p>
+<ol>
+<li>dts到底需不需要自己计算？</li>
+<li>还有播放速度过快的可能原因？ </li>
+<li>还有PTS和DTS的具体含义？<br>int64_t pts;                         ///&lt; presentation time stamp in time_base units<br>int64_t dts;                         ///&lt; decompression time stamp in time_base units</li>
+</ol>
+<p>上面的意思是不是说，播放器根据PTS进行播放。然后DTS是在编码的时候自己设置？</p>
+<p>刚用ffmpeg，好些东西不懂，还请大侠多多指教——刚才又试了一下，把time_base降为10帧每秒。播放速度和正常速度接近。但是不知道FLV文件的帧率该设置多少合适。有没有一个权威的说法。</p>
+<p>A:我也做摄像头捕捉，跟你出现一样的问题，我自己分析的话，应该是捕捉摄像头的图像的速度只有10帧每秒，但是保存成视频25帧每秒的话播放看起来就非常快，但是我摄像头捕捉设定的是25帧每秒，难道是速度达不到？<br>反正我还没解决，LZ解决了的话告诉下，</p>
+<p>谢谢。暂时认为是摄像头捕捉速率问题。换了一个高清无驱摄像头就好了</p>
+<p>Q:在每个音视频数据包中都含有PTS和DTS，一个数据包中应该含有多个数据帧以及音频数据，那么这里的PTS和DTS它是如何来标识数据帧的？PTS和DTS的单位是什么？视频的最小单位是帧，可通过PTS来指定它何时播放，那音频的最小单位是什么？这里的PTS对音频而言它标识的是什么？是这个时间点采样点吗？</p>
+<p>在网上找了很久关于音视频编解码的资料，都没有合适的</p>
+<p>A:</p>
+<p>audio_timebase = av_q2d(fmtctx-&gt;streams[audio_index]-&gt;time_base);<br>video_timebase = av_q2d(fmtctx-&gt;streams[video_index]-&gt;time_base);</p>
+<p>last_video_pts = pts <em> video_timebase;<br>last_audio_pts = pts </em> audio_timebase;</p>
+<p>timebase就是单位</p>
+<p>以audio为基准同步video。只要设置好了 ao 的参数，如sample rate, channels, sample size等， audio驱动就能以正确的速度播放，所以只要程序里write不出大问题的话，这种同步是非常有效的。</p>
+<p>在video out里如下做：</p>
+<p>pre_time = av_gettime();<br>gl_vo-&gt;vo_display(pic);<br>after_time = av_gettime();<br>rest_time = 1000*1000/fps - (after_time - pre_time);</p>
+<p>av_diff = last_audio_pts - last_video_pts;</p>
+<p>if ( av_diff &gt; 0.2 )<br>{<br>            if( av_diff &lt; 0.5 ) rest_time -= rest_time / 4;<br>            else rest_time -= rest_time / 2;<br>}<br>else if ( av_diff &lt; -0.2)<br>{<br>            if( av_diff &gt; -0.5 ) rest_time += rest_time / 4;<br>            else rest_time += rest_time / 2;<br>}</p>
+<p>if ( rest_time &gt; 0 )<br>    usleep(rest_time);</p>
+<p>Q:谢谢kf701的回复，看后明白了不少<br>这种同步是音频抽样一次就与一帧图像去同步的吗？</p>
+<p>A:上面的代码是每display一个picture,就与audio的PTS比较一下,<br>如果没有audio,只有video,那么video就会以fps显示, 靠的就是那个 usleep(rest_time)</p>
+<p>Q:如何利用AVPacket包里的pts,dts实现音视频同步？声频播放是只管自己播放，视频有一个初始化播放帧率，如何根据AVPacket里的pts,dts还实现两者的同步？<br>现在我的视频播放一直按原始播放帧率播放，声音有点卡！哪位知道，尽快告知小弟！</p>
+<p>A:DTS：decoding time stamp<br>PTS：presentation time stamp</p>
+<p>Generally the PTS and DTS will only differ when the stream we are playing has B frames in it.</p>
+<p>Q:关于b帧和时间戳的问题</p>
+<p>我从mpeg2视频中用av_read_frame()读取视频帧并解码，顺序是IPBBPBB…<br>它们的pts顺序是1423756…现在我要把这个视频再用mpeg2编码，最大b帧数还是2.那么我在编码时是否要将视频数据调整为按显示时间先后的顺序，再交给avcodec_encode_video()编码？即把第2帧放在3、4帧之后，第7帧放在5、6帧之后？</p>
+<p>A:你不能这么做，编码器会给你这么做的。如果你有B帧，那么所有的B帧都会被放在缓冲区里直到下一个I/P帧到来</p>
+<p>例如：你的输入序列是IBBPBBPBBI</p>
+<p>那么输出的序列是</p>
+<p>输入I，编码I，输出I</p>
+<p>输入B</p>
+<p>输入B</p>
+<p>输入P，编码P，输出P</p>
+<p>编码B，输出B</p>
+<p>编码B，输出B</p>
+<p>输入P,编码P，输出P</p>
+<p>。。。。。。</p>
+<p>在解码端所有的P帧都会被放在缓冲力直到下一个I/P真的到来</p>
+<p>如：解码I，输出I</p>
+<p>解码P,放入缓冲P</p>
+<p>解码B，输出B</p>
+<p>解码B，输出B</p>
+<p>解码P，输出上一次P帧</p>
+<p>Q:解码出来的图片的时间戳问题 MPEG一个包中包含有时间戳, 而可能几个包才能解码出一张图象, 也可能一个包能解码出几张图, 请问包中的时间戳与解码出来的图象如何对应上?</p>
+<p>A:在ffmpeg中通过parser部件把从avformat部件取下来的原始包重新“合成”为有仅包含一个完整帧的包。从MPEG2部份的代码中看出，如果“几个包才能解码出一张图象”的话，会取第一个包的PTS和DTS，如果“也可能一个包能解码出几张图”，则会跟据这个包的PTS和DTS通过帧频推算出其它帧的DTS。</p>
+<p>Q: ffmpeg的avcodec_decode_video 函数解码时间戳问题？在   VLC 中调用   avcodec_decode_video() 函数进行解码时，AVFrame-&gt;pts 时间戳不对，导致我的图像不能够显示？ 请问有谁知道它的解码原理，这个 PTS 怎么得出的吗？还是外部传入的？</p>
+<p>A:      /<em> NOTE: ipts is the PTS of the <em>first</em> picture beginning in<br>           this packet, if any </em>/<br>        is-&gt;video_st-&gt;codec-&gt;reordered_opaque= pkt-&gt;pts;<br>        len1 = avcodec_decode_video(is-&gt;video_st-&gt;codec,<br>                                    frame, &amp;got_picture,<br>                                    pkt-&gt;data, pkt-&gt;size);</p>
+<pre><code>if(   (decoder_reorder_pts || pkt-&gt;dts == AV_NOPTS_VALUE)
+   &amp;&amp; frame-&gt;reordered_opaque != AV_NOPTS_VALUE)
+    pts= frame-&gt;reordered_opaque;
+else if(pkt-&gt;dts != AV_NOPTS_VALUE)
+    pts= pkt-&gt;dts;
+else
+    pts= 0;
+pts *= av_q2d(is-&gt;video_st-&gt;time_base);
+</code></pre><p>Q:我贴下   VLC 的代码，（vlc-0.9.8a/modules/codec/avcodec/video.c 文件中）</p>
+<pre><code> i_used = avcodec_decode_video( p_sys-&gt;p_context, p_sys-&gt;p_ff_pic,
+                              &amp;b_gotpicture,
+                              p_sys-&gt;i_buffer &lt;= 0 &amp;&amp; p_sys-&gt;b_flush ? NULL : (uint8_t*)p_sys-&gt;p_buffer, p_sys-    &gt;i_buffer );
+
+中间省略
+</code></pre><p>取得   PTS ，<br>       if( p_sys-&gt;p_ff_pic-&gt;pts )<br>       {<br>         printf(“ p_sys-&gt;p_ff_pic-&gt;pts   = %Lx\n”,   p_sys-&gt;p_ff_pic-&gt;pts);<br>         p_sys-&gt;i_pts = p_sys-&gt;p_ff_pic-&gt;pts;<br>       }<br>从   AVFrame 结构中取得   这个 PTS ，但是这个   AVFrame 结构中取得   这个 PTS 从哪里取得的呢？</p>
+<p>A:时间戳一般是在编码的时候加入到媒体文件中的，所以在解码时可以从中分析出PTS.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jingcmu.com/2014/10/15/时间戳问题汇总-转/" data-id="cixyv6eoe004hj0p2wa4wa5o1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebRTC/">WebRTC</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/10/15/美漂“失去的黄金十年”：拿了绿卡也要回国/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          美漂“失去的黄金十年”：拿了绿卡也要回国
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/10/15/劝学/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">劝学</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/say/">say</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/古文观止/">古文观止</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作总结/">工作总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心理学/">心理学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/照片-视频/">照片/视频</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/科技界/">科技界</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运动/">运动</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Alfred/">Alfred</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MacOS/">MacOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sundy/">Sundy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPX/">VPX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebRTC/">WebRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/others/">others</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/">stl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal/">terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webRTC/">webRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/你该知道的/">你该知道的</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开心/">开心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感人/">感人</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搞笑/">搞笑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活哲学/">生活哲学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网球/">网球</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美食/">美食</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/肌肉/">肌肉</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/荀子/">荀子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/说说/">说说</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/郁闷/">郁闷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Alfred/" style="font-size: 10px;">Alfred</a> <a href="/tags/C-C/" style="font-size: 12px;">C/C++</a> <a href="/tags/Google/" style="font-size: 18px;">Google</a> <a href="/tags/MacOS/" style="font-size: 16px;">MacOS</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Sundy/" style="font-size: 14px;">Sundy</a> <a href="/tags/VPX/" style="font-size: 14px;">VPX</a> <a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/others/" style="font-size: 10px;">others</a> <a href="/tags/stl/" style="font-size: 10px;">stl</a> <a href="/tags/terminal/" style="font-size: 16px;">terminal</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/webRTC/" style="font-size: 12px;">webRTC</a> <a href="/tags/你该知道的/" style="font-size: 12px;">你该知道的</a> <a href="/tags/动态规划/" style="font-size: 14px;">动态规划</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开心/" style="font-size: 12px;">开心</a> <a href="/tags/感人/" style="font-size: 10px;">感人</a> <a href="/tags/搞笑/" style="font-size: 12px;">搞笑</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/生活哲学/" style="font-size: 12px;">生活哲学</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/网球/" style="font-size: 10px;">网球</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/肌肉/" style="font-size: 10px;">肌肉</a> <a href="/tags/荀子/" style="font-size: 10px;">荀子</a> <a href="/tags/说说/" style="font-size: 10px;">说说</a> <a href="/tags/郁闷/" style="font-size: 10px;">郁闷</a> <a href="/tags/面试/" style="font-size: 12px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/01/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/13/WebM-技术探秘-VP8的候补参考帧-译/">WebM 技术探秘- VP8的候补参考帧(译)</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/03/-LeetCode新题-Excel-Sheet-Column-Title/">[LeetCode新题] Excel Sheet Column Title</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/03/-LeetCode新题-Intersection-of-Two-Linked-Lists/">[LeetCode新题]Intersection of Two Linked Lists</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/03/一个简单的面试题/">一个简单的面试题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

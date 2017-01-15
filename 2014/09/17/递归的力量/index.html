@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>递归的力量 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="递归是一门艺术，越是用的多，越是觉得递归不但威力无穷，还极大的简化的程序的编写。下面就总结一些使用递归简化代码编写难度的例子，代码都来自于准备面试的练习过程。
+1. Swap Nodes in PairsGiven a linked list, swap every two adjacent nodes and return its head.
+For example,Given 1-&amp;gt;2-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="递归的力量">
+<meta property="og:url" content="http://jingcmu.com/2014/09/17/递归的力量/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="递归是一门艺术，越是用的多，越是觉得递归不但威力无穷，还极大的简化的程序的编写。下面就总结一些使用递归简化代码编写难度的例子，代码都来自于准备面试的练习过程。
+1. Swap Nodes in PairsGiven a linked list, swap every two adjacent nodes and return its head.
+For example,Given 1-&amp;gt;2-">
+<meta property="og:updated_time" content="2014-09-17T18:00:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="递归的力量">
+<meta name="twitter:description" content="递归是一门艺术，越是用的多，越是觉得递归不但威力无穷，还极大的简化的程序的编写。下面就总结一些使用递归简化代码编写难度的例子，代码都来自于准备面试的练习过程。
+1. Swap Nodes in PairsGiven a linked list, swap every two adjacent nodes and return its head.
+For example,Given 1-&amp;gt;2-">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://jingcmu.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-递归的力量" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/17/递归的力量/" class="article-date">
+  <time datetime="2014-09-17T02:54:51.000Z" itemprop="datePublished">2014-09-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      递归的力量
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>递归是一门艺术，越是用的多，越是觉得递归不但威力无穷，还极大的简化的程序的编写。下面就总结一些使用递归简化代码编写难度的例子，代码都来自于准备面试的练习过程。</p>
+<h4 id="1-Swap-Nodes-in-Pairs"><a href="#1-Swap-Nodes-in-Pairs" class="headerlink" title="1. Swap Nodes in Pairs"></a>1. Swap Nodes in Pairs</h4><p>Given a linked list, swap every two adjacent nodes and return its head.</p>
+<p>For example,<br>Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3.</p>
+<p>Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.</p>
+<p>递归代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/** </div><div class="line"> * Definition for singly-linked list. </div><div class="line"> * struct ListNode &#123; </div><div class="line"> *     int val; </div><div class="line"> *     ListNode *next; </div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125; </div><div class="line"> * &#125;; </div><div class="line"> */  </div><div class="line">class Solution &#123;  </div><div class="line">public:  </div><div class="line">    ListNode *swapPairs(ListNode *ptr) &#123;  </div><div class="line">        if(ptr == nullptr || ptr-&gt;next == nullptr) &#123; //base case  </div><div class="line">            return ptr;  </div><div class="line">        &#125;  </div><div class="line">        ListNode *temp = ptr-&gt;next;  </div><div class="line">        ListNode *next = ptr-&gt;next-&gt;next;  </div><div class="line">        temp-&gt;next = ptr;  </div><div class="line">        ptr-&gt;next = swapPairs(next);  </div><div class="line">        return temp;  </div><div class="line">    &#125;  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>可以看出，使用了递归的思考方式之后，代码不需要再考虑比较复杂的边界情况，只需要把子问题当成能够成功处理并返回正确的答案的黑盒子。</p>
+<h4 id="2-另一个经典题目"><a href="#2-另一个经典题目" class="headerlink" title="2.  另一个经典题目."></a>2.  另一个经典题目.</h4><p>一个哥们面试google的时候还碰到，很简单，但是迭代很不容易做到一次bug free，但是用递归就容易多了。</p>
+<p>递归代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ListNode * ReverseList( ListNode * ptr, ListNode *last)  </div><div class="line">&#123;  </div><div class="line">   if(ptr == nullptr) return last;  </div><div class="line">   ListNode *next = ptr-&gt;next;  </div><div class="line">   ptr-&gt;next = last;  </div><div class="line">   return ReverseList(next, ptr);  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对比迭代的解法（这已经是非常好的写法了，写迭代时你会发现需要考虑边界情况，需要担心指针会不会非法操作，一堆的事！）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ListNode * ReverseList1( ListNode * ptr )  </div><div class="line">&#123;  </div><div class="line">    ListNode * temp;  </div><div class="line">    ListNode * previous = NULL;  </div><div class="line">    while(ptr != NULL) &#123;  </div><div class="line">        temp = ptr-&gt;next;  </div><div class="line">        ptr-&gt;next = previous;  </div><div class="line">        previous = ptr;  </div><div class="line">        ptr = temp;  </div><div class="line">    &#125;  </div><div class="line">    return previous;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="3-Reverse-Nodes-in-k-Group"><a href="#3-Reverse-Nodes-in-k-Group" class="headerlink" title="3. Reverse Nodes in k-Group"></a>3. Reverse Nodes in k-Group</h4><p>For example,<br>Given this linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5</p>
+<p>For k = 2, you should return: 2-&gt;1-&gt;4-&gt;3-&gt;5</p>
+<p>For k = 3, you should return: 3-&gt;2-&gt;1-&gt;5-&gt;4</p>
+<p>递归代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">ListNode *reverseKGroup(ListNode *head, int k) &#123;  </div><div class="line">    if(head == nullptr || head-&gt;next == nullptr|| k == 1) return head;  </div><div class="line">    ListNode *pre = head, *ptr = head-&gt;next, *next;  </div><div class="line">    for(int i=1; i&lt;k &amp;&amp; ptr!=nullptr; i++) &#123;  </div><div class="line">        next = ptr-&gt;next;  </div><div class="line">        ptr-&gt;next = pre;  </div><div class="line">        pre = ptr;  </div><div class="line">        ptr = next;  </div><div class="line">    &#125;  </div><div class="line">    head-&gt;next = reverseKGroup(ptr, k);  </div><div class="line">    return pre;  </div><div class="line">&#125;</div><div class="line">```  </div><div class="line">这题如果不用递归，相当不好写的。</div><div class="line"></div><div class="line">#### 4. 二分查找的递归实现和非递归实现比较</div><div class="line"></div><div class="line">递归解法：</div></pre></td></tr></table></figure></p>
+<p>int binary_search(int* array, int start, int end, int num_wanted)<br>{<br>    int middle = (end - start)/2 + start; // a<br>    if(end &lt; start){<br>        return -1;<br>    }else if(num_wanted == array[middle]){<br>        return middle;<br>    }    </p>
+<pre><code>int index;    
+if(num_wanted &gt; array[middle]){    
+    index = binary_search(array, middle+1, end, num_wanted); // b    
+}else{    
+    index = binary_search(array, start, middle-1, num_wanted); // c    
+}    
+return index; // d    
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">在编写的时候，基于4个原则：</div><div class="line">a. 找基准情况：</div><div class="line"></div><div class="line">基准情况就是递归的终止条件，通常不难确定</div><div class="line"></div><div class="line">b. 不断演进，找到问题的规模更小的子问题，可能需要考虑很多限制条件</div><div class="line"></div><div class="line">c. 不要去考虑子问题是如何工作的，假设子问题通过递归调用能过正确解决</div><div class="line"></div><div class="line">d. 不要做重复的递归，譬如斐波那契数列中，f(n) = f(n-1) + f(n-2) 每次调用会增加额外两次调用，复杂度是O(2^N)</div><div class="line"></div><div class="line">### 尾递归问题</div><div class="line"></div><div class="line">二分查找的递归算法中，递归调用之后仅仅是返回了其返回值，这样的递归可以被写成尾递归的形式。事实上，递归调用过程可以分为递和归两个阶段，往下走叫递，往上走叫归，尾递归在归的过程中实际上不做任何事情（因此尾递归是可以很方便的转化成非递归程序）。上面的代码还不是尾递归形式，其尾递归形式为：</div></pre></td></tr></table></figure></p>
+<p>int binary_search(int* array, int start, int end, int num_wanted)<br>{<br>    int middle = (end - start)/2 + start; // a<br>    if(end &lt; start){<br>        return -1;<br>    }else if(num_wanted == array[middle]){<br>        return middle;<br>    }    </p>
+<pre><code>if(num_wanted &gt; array[middle]){    
+   return binary_search(array, middle+1, end, num_wanted); // b    
+} else{    
+   return binary_search(array, start, middle-1, num_wanted); // c    
+}    
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 尾递归的定义：</div><div class="line">函数所做的最后一件事情是一个函数调用（递归或非递归的），被称为尾部调用（tail-call），使用尾部调用的递归称为尾递归。要使调用称为真正的尾部调用，在尾部调用的函数返回前，对其结果不能执行任何其他操作。而由于在函数中不再做任何事情，那个函数的实际的栈结构也就不需要了，唯一的问题是，很多程序设计语言和编译器不知道如何除去没有用的栈结构。如果我们能找到一个除去这些不需要的栈结构的方法，那么我们的尾部递归函数就可以在固定大小的栈中运行。</div><div class="line"></div><div class="line">### 尾部调用优化</div><div class="line"></div><div class="line">在尾部调用之后除去栈结构的方法称为尾部调用优化。这种优化可以通过询问几个问题来回答：</div><div class="line"></div><div class="line">a. 函数在尾部被调用之后，还需要使用哪个本地变量？哪个也不需要</div><div class="line"></div><div class="line">b. 会对返回值做什么处理？什么处理也不做</div><div class="line"></div><div class="line">c. 传递到函数的哪个参数将会被使用？哪个也不使用</div><div class="line"></div><div class="line">好像一旦控制权传递给了尾部调用的函数，栈中就再也没有有用的内容了，虽然还占据着空间，但函数的栈结构已经事实上没用了，因此尾部调用优化就是在尾部进行函数调用的时候，使用下一个栈结构覆盖当前的栈结构，同时保持原来的返回地址。</div><div class="line"></div><div class="line">因此尾部调用优化的本质是对栈进行处理，再也不需要活动记录，所以可以删掉，并将尾部调用的函数重定向返回到调用我们的函数。这意味着我们必须手工重新编写栈来仿照一个返回地址，以使得尾部调用的函数能直接返回到调用它的函数。</div><div class="line"></div><div class="line">### 尾递归优化</div><div class="line"></div><div class="line">当函数在尾部调用中调用自己时，方法更为简单。我们只需要将参数的新值移到旧值之上，然后在本地变量保存到栈上之后立即进行一个到函数中位置的跳转。 由于我们只是跳转到同一个函数，所以返回地址和旧的是相同的，栈的大小也不会改变。 因此，在跳转之前我们要做的惟一一件事情就是使用新的参数取代旧的参数。</div><div class="line"></div><div class="line">### GCC的尾递归（尾部调用）优化</div><div class="line"></div><div class="line">GCC只要打开-O2就可以支持尾部调用优化，因为-O2会打开-foptimize-sibling-calls 选项</div><div class="line"></div><div class="line">下面是我以前写的一个非递归的模板实现：</div></pre></td></tr></table></figure></p>
+<p>template <class bidirectioniterator,="" class="" t=""><br>BidirectionIterator binary_search(BidirectionIterator begin, BidirectionIterator end, T target) {<br>    BidirectionIterator mid, end_reserve = end, last_mid;<br>    mid = begin + (end-begin)/2;<br>    while(begin != end &amp;&amp; mid != last_mid) {<br>        if(<em>mid == target) {<br>            return mid;<br>        }<br>        else if(</em>mid &gt; target) {<br>            end = mid;<br>            mid = begin + (end-begin)/2;<br>        }<br>        else {<br>            begin = mid;<br>            mid = begin + (end-begin)/2;<br>        }<br>        last_mid = mid;<br>    }<br>    return end_reserve;<br>}<br>```</class></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jingcmu.com/2014/09/17/递归的力量/" data-id="cixyv6eon0058j0p2yr19zoci" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/09/17/stl里关于heap的函数与priority-queue的区别/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          stl里关于heap的函数与priority_queue的区别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/09/17/每个码农都应该知道的数字/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">每个码农都应该知道的数字</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/say/">say</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/古文观止/">古文观止</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作总结/">工作总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心理学/">心理学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/照片-视频/">照片/视频</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/科技界/">科技界</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运动/">运动</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Alfred/">Alfred</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MacOS/">MacOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sundy/">Sundy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPX/">VPX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebRTC/">WebRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/others/">others</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/">stl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal/">terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webRTC/">webRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/你该知道的/">你该知道的</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开心/">开心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感人/">感人</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搞笑/">搞笑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活哲学/">生活哲学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网球/">网球</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美食/">美食</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/肌肉/">肌肉</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/荀子/">荀子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/说说/">说说</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/郁闷/">郁闷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Alfred/" style="font-size: 10px;">Alfred</a> <a href="/tags/C-C/" style="font-size: 12px;">C/C++</a> <a href="/tags/Google/" style="font-size: 18px;">Google</a> <a href="/tags/MacOS/" style="font-size: 16px;">MacOS</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Sundy/" style="font-size: 14px;">Sundy</a> <a href="/tags/VPX/" style="font-size: 14px;">VPX</a> <a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/others/" style="font-size: 10px;">others</a> <a href="/tags/stl/" style="font-size: 10px;">stl</a> <a href="/tags/terminal/" style="font-size: 16px;">terminal</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/webRTC/" style="font-size: 12px;">webRTC</a> <a href="/tags/你该知道的/" style="font-size: 12px;">你该知道的</a> <a href="/tags/动态规划/" style="font-size: 14px;">动态规划</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开心/" style="font-size: 12px;">开心</a> <a href="/tags/感人/" style="font-size: 10px;">感人</a> <a href="/tags/搞笑/" style="font-size: 12px;">搞笑</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/生活哲学/" style="font-size: 12px;">生活哲学</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/网球/" style="font-size: 10px;">网球</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/肌肉/" style="font-size: 10px;">肌肉</a> <a href="/tags/荀子/" style="font-size: 10px;">荀子</a> <a href="/tags/说说/" style="font-size: 10px;">说说</a> <a href="/tags/郁闷/" style="font-size: 10px;">郁闷</a> <a href="/tags/面试/" style="font-size: 12px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/01/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/13/WebM-技术探秘-VP8的候补参考帧-译/">WebM 技术探秘- VP8的候补参考帧(译)</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/03/-LeetCode新题-Excel-Sheet-Column-Title/">[LeetCode新题] Excel Sheet Column Title</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/03/-LeetCode新题-Intersection-of-Two-Linked-Lists/">[LeetCode新题]Intersection of Two Linked Lists</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/03/一个简单的面试题/">一个简单的面试题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
