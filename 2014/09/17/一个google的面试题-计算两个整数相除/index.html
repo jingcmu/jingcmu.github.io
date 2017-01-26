@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="陈靖的读书笔记">
 <meta property="og:description" content="Divide number and return result in form of a string. e.g 100/3 result should be 33.(3) Here 3 is in brackets because it gets repeated continuously and 5/10 should be 0.5.
 这题难在怎么去判断循环和记录循环出现的位置">
-<meta property="og:updated_time" content="2017-01-26T13:28:04.000Z">
+<meta property="og:updated_time" content="2017-01-26T13:34:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个google的面试题 计算两个整数相除">
 <meta name="twitter:description" content="Divide number and return result in form of a string. e.g 100/3 result should be 33.(3) Here 3 is in brackets because it gets repeated continuously and 5/10 should be 0.5.
@@ -412,11 +412,11 @@
       
 
       
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=32628933&auto=1&height=66"></iframe>
-
-<p>Divide number and return result in form of a string. e.g 100/3 result should be 33.(3) Here 3 is in brackets because it gets repeated continuously and 5/10 should be 0.5.</p>
+        <p>Divide number and return result in form of a string. e.g 100/3 result should be 33.(3) Here 3 is in brackets because it gets repeated continuously and 5/10 should be 0.5.</p>
 <p>这题难在怎么去判断循环和记录循环出现的位置</p>
 <a id="more"></a>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=32628933&auto=1&height=66"></iframe>
+
 <p>上代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#include &quot;common.hpp&quot;  </div><div class="line">  </div><div class="line">string caldec(int a, int b) &#123;  </div><div class="line">    string s = &quot;&quot;;  </div><div class="line">    int residule = a%b;   </div><div class="line">    unordered_map&lt;int, int&gt; residule_index; //记录出现过的残差的值和位置  </div><div class="line">    s += to_string(a/b);  </div><div class="line">    s += &quot;.&quot;;  </div><div class="line">    int index = s.length();  </div><div class="line">    while(residule != 0 &amp;&amp; residule_index.find(residule) == residule_index.end()) &#123;  </div><div class="line">        residule_index[residule] = index++;  </div><div class="line">        s += to_string((residule*10)/b);  </div><div class="line">        residule = (residule*10)%b;  </div><div class="line">    &#125;  </div><div class="line">    if(residule_index.find(residule) != residule_index.end()) &#123;  </div><div class="line">        int i = residule_index[residule];  </div><div class="line">        s.insert(i, &quot;(&quot;);  </div><div class="line">        s += &quot;)&quot;;  </div><div class="line">    &#125;  </div><div class="line">    if(s[s.length()-1] == &apos;.&apos;) &#123;  </div><div class="line">        s = s.substr(0, s.length() - 1);  </div><div class="line">    &#125;  </div><div class="line">    return s;  </div><div class="line">&#125;  </div><div class="line">//我最近比较喜欢用随机数进行测试  </div><div class="line">int main() &#123;  </div><div class="line">    srand(time(NULL));  </div><div class="line">    for(int i=0; i&lt;10; i++) &#123;  </div><div class="line">        int a = rand()%101;  </div><div class="line">        int b = rand()%29;  </div><div class="line">        if(a &gt; b &amp;&amp; b != 0) &#123;  </div><div class="line">            cout &lt;&lt; &quot;a = &quot; &lt;&lt; a &lt;&lt; &quot;, b = &quot; &lt;&lt; b &lt;&lt; &quot;, res = &quot; &lt;&lt; caldec(a, b) &lt;&lt; endl;  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">    return 0;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
