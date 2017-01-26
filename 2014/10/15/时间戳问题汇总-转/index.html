@@ -92,7 +92,7 @@
 <meta property="og:url" content="http://jingcmu.com/2014/10/15/时间戳问题汇总-转/index.html">
 <meta property="og:site_name" content="陈靖的读书笔记">
 <meta property="og:description" content="我刚接触流媒体不久， 现在遇到一个非常奇怪的问题，向各位大侠请假，请你们指点。问题是这样的 用一个 VLC(流媒体客户端) 去请求流媒体服务器上的数据， 但是获得的数据播放速度明显快于1倍速，大概是 timestamp 不对，不知道是服务器的错误，还是客户端解码时出错， 总感觉服务器那边有问题， 由于服务器端是客户端提供的，客户说是我们的问题，我还不知道如何证明是谁的错。">
-<meta property="og:updated_time" content="2017-01-26T13:28:53.000Z">
+<meta property="og:updated_time" content="2017-01-26T13:35:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="时间戳问题汇总(转)">
 <meta name="twitter:description" content="我刚接触流媒体不久， 现在遇到一个非常奇怪的问题，向各位大侠请假，请你们指点。问题是这样的 用一个 VLC(流媒体客户端) 去请求流媒体服务器上的数据， 但是获得的数据播放速度明显快于1倍速，大概是 timestamp 不对，不知道是服务器的错误，还是客户端解码时出错， 总感觉服务器那边有问题， 由于服务器端是客户端提供的，客户说是我们的问题，我还不知道如何证明是谁的错。">
@@ -409,10 +409,10 @@
       
 
       
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=432506345&auto=1&height=66"></iframe>
-
-<p>我刚接触流媒体不久， 现在遇到一个非常奇怪的问题，向各位大侠请假，请你们指点。<br>问题是这样的 用一个 VLC(流媒体客户端) 去请求流媒体服务器上的数据， 但是获得的数据播放速度明显快于1倍速，大概是 timestamp 不对，不知道是服务器的错误，还是客户端解码时出错， 总感觉服务器那边有问题， 由于服务器端是客户端提供的，客户说是我们的问题，我还不知道如何证明是谁的错。</p>
+        <p>我刚接触流媒体不久， 现在遇到一个非常奇怪的问题，向各位大侠请假，请你们指点。<br>问题是这样的 用一个 VLC(流媒体客户端) 去请求流媒体服务器上的数据， 但是获得的数据播放速度明显快于1倍速，大概是 timestamp 不对，不知道是服务器的错误，还是客户端解码时出错， 总感觉服务器那边有问题， 由于服务器端是客户端提供的，客户说是我们的问题，我还不知道如何证明是谁的错。</p>
 <a id="more"></a>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=432506345&auto=1&height=66"></iframe>
+
 <p>A:RFC3984 规定采用 <strong>90000 Hz</strong> 的时钟，因此如果编码帧频是 30，那么时间戳间隔就该是 90000 / 30 = 3000，根据抓包来看，似乎时间戳间隔的确是 3000。</p>
 <p>时间戳的 间隔不固定，比如有的时间戳间隔是 2990 有的是 3002，会导致解析出来的视频快播的效果么</p>
 <p>Q：各位大侠好：<br>我现在正在开发视频实时流播放，简单的过程如下：<br>采集视频流 -&gt; 视频流转换为Sorenson H.263编码格式   -&gt; 把编码的实时流通过RTMP协议发送 -&gt; flash客户端进行播放。<br>现在我的时间戳颗粒是这样生成的：<br>第一帧的时间戳为0；<br>第二帧的时间戳的算法为：第一个字符编码的当前时间 - 上一帧第一个字符编码的当前时间<br>根据这个时间颗粒的算法，我在flash客户端播放就会产生延时。<br>请问各位大侠有什么好的建议或是文档之类的，以前firstime管管建议我看RFC4629文档，但是效果不太明显？<br>谢谢！</p>
