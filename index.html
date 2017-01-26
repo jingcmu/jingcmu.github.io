@@ -487,12 +487,15 @@
 
       
         
-          
-            <p>Divide number and return result in form of a string. e.g 100/3 result should be 33.(3) Here 3 is in brackets because it gets repeated continuously and 5/10 should be 0.5.</p>
+          <p>Divide number and return result in form of a string. e.g 100/3 result should be 33.(3) Here 3 is in brackets because it gets repeated continuously and 5/10 should be 0.5.</p>
 <p>这题难在怎么去判断循环和记录循环出现的位置</p>
-<p>上代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#include &quot;common.hpp&quot;  </div><div class="line">  </div><div class="line">string caldec(int a, int b) &#123;  </div><div class="line">    string s = &quot;&quot;;  </div><div class="line">    int residule = a%b;   </div><div class="line">    unordered_map&lt;int, int&gt; residule_index; //记录出现过的残差的值和位置  </div><div class="line">    s += to_string(a/b);  </div><div class="line">    s += &quot;.&quot;;  </div><div class="line">    int index = s.length();  </div><div class="line">    while(residule != 0 &amp;&amp; residule_index.find(residule) == residule_index.end()) &#123;  </div><div class="line">        residule_index[residule] = index++;  </div><div class="line">        s += to_string((residule*10)/b);  </div><div class="line">        residule = (residule*10)%b;  </div><div class="line">    &#125;  </div><div class="line">    if(residule_index.find(residule) != residule_index.end()) &#123;  </div><div class="line">        int i = residule_index[residule];  </div><div class="line">        s.insert(i, &quot;(&quot;);  </div><div class="line">        s += &quot;)&quot;;  </div><div class="line">    &#125;  </div><div class="line">    if(s[s.length()-1] == &apos;.&apos;) &#123;  </div><div class="line">        s = s.substr(0, s.length() - 1);  </div><div class="line">    &#125;  </div><div class="line">    return s;  </div><div class="line">&#125;  </div><div class="line">//我最近比较喜欢用随机数进行测试  </div><div class="line">int main() &#123;  </div><div class="line">    srand(time(NULL));  </div><div class="line">    for(int i=0; i&lt;10; i++) &#123;  </div><div class="line">        int a = rand()%101;  </div><div class="line">        int b = rand()%29;  </div><div class="line">        if(a &gt; b &amp;&amp; b != 0) &#123;  </div><div class="line">            cout &lt;&lt; &quot;a = &quot; &lt;&lt; a &lt;&lt; &quot;, b = &quot; &lt;&lt; b &lt;&lt; &quot;, res = &quot; &lt;&lt; caldec(a, b) &lt;&lt; endl;  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">    return 0;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/09/17/一个google的面试题-计算两个整数相除/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -630,15 +633,15 @@
 
       
         
-          
-            <p>题目来源：网易有道2013年校园招聘面试二面试题</p>
+          <p>题目来源：网易有道2013年校园招聘面试二面试题</p>
 <p>题目描述：<br>小明每天都在开源社区上做项目，假设每天他都有很多项目可以选，其中每个项目都有一个开始时间和截止时间，假设做完每个项目后，拿到报酬都是不同的。由于小明马上就要硕士毕业了，面临着买房、买车、给女友买各种包包的鸭梨，但是他的钱包却空空如也，他需要足够的money来充实钱包。万能的网友麻烦你来帮帮小明，如何在最短时间内安排自己手中的项目才能保证赚钱最多（注意：做项目的时候，项目不能并行，即两个项目之间不能有时间重叠，但是一个项目刚结束，就可以立即做另一个项目，即项目起止时间点可以重叠）。</p>
-<p>输入：<br>输入可能包含多个测试样例。<br>对于每个测试案例，输入的第一行是一个整数n(1&lt;=n&lt;=10000)：代表小明手中的项目个数。<br>接下来共有n行，每行有3个整数st、ed、val，分别表示项目的开始、截至时间和项目的报酬，相邻两数之间用空格隔开。<br>st、ed、value取值均在32位有符号整数（int）的范围内，输入数据保证所有数据的value总和也在int范围内。</p>
-<p>输出：<br>对应每个测试案例，输出小明可以获得的最大报酬。</p>
-<p>样例输入：<br>3<br>1 3 6<br>4 8 9<br>2 5 16<br>4<br>1 14 10<br>5 20 15<br>15 20 8<br>18 22 12<br>样例输出：<br>16<br>22</p>
-<p>思路：<br>总共有n个项目，用倒推的思想，假设已经知道第n-1个项目中的最优解dp[n-1]，如果要得到n个项目中的最优解dp[n]，就需要比较添加了第n个项目之后是否会提高收益，而添加了第n个项目之后的解是，value[n] + dp[i]，其中i是指添加了第n个项目之后，前i个项目可以不受影响的进行。<br>到了这一步，就可以知道需要对项目按照结束时间进行排序了，对吧？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;  </div><div class="line">#include &lt;algorithm&gt;  </div><div class="line">using namespace std;  </div><div class="line">int n;  </div><div class="line">class P&#123;  </div><div class="line">public:  </div><div class="line">    int st,ed,value;  </div><div class="line">&#125;;  </div><div class="line">P p[10001];  </div><div class="line">int dp[10001]; //dp[i]安排前i个项目，多能到得到的最大value  </div><div class="line">bool cmp(const P &amp; p1, const P &amp; p2)&#123;  </div><div class="line">    return p1.ed &lt; p2.ed;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line">int main()&#123;  </div><div class="line">    int n, i, j;  </div><div class="line">    while(scanf(&quot;%d&quot;, &amp;n) != EOF)&#123;  </div><div class="line">        for(i=1; i&lt;=n; i++)&#123;  </div><div class="line">            scanf(&quot;%d %d %d&quot;, &amp;p[i].st, &amp;p[i].ed, &amp;p[i].value);  </div><div class="line">            dp[i] = 0;  </div><div class="line">        &#125;  </div><div class="line">        sort(p+1, p+n+1, cmp);  </div><div class="line">        dp[0] = 0;  </div><div class="line">        for(i=1; i&lt;=n; i++)&#123;  </div><div class="line">            for(j=i-1; j&gt;0; j--)&#123;  </div><div class="line">                if(p[i].st &gt;= p[j].ed)  </div><div class="line">                    break;  </div><div class="line">            &#125;  </div><div class="line">            dp[i] = dp[j] + p[i].value;  </div><div class="line">            if(dp[i] &lt; dp[i-1])  </div><div class="line">                dp[i] = dp[i-1];  </div><div class="line">        &#125;  </div><div class="line">        printf(&quot;%d\n&quot;,dp[n]);  </div><div class="line">    &#125;  </div><div class="line">    return 0;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/09/17/动态规划-项目安排/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -776,14 +779,14 @@
 
       
         
-          
-            <p>对一个子序列，比如{1, 9, 3, 8, 11, 4, 5, 6, 4, 19, 7, 1, 7 }，求最长递增子序列，不要求连续，这样一个字符串的的最长递增子序列就是{1,3,4,5,6,7}或者{1,3,4,5,6,19}。</p>
-<p>思路：跟我之前发的《动态规划之项目安排》的思路很像，但是要简单些。</p>
-<p>假设我们知道d[i]代表到第i个位置的最长递增子序列的长度，那么d[i+1]该怎么求？</p>
-<p>在第i+1位置无非是两种情况，取和不取，取的话，那么就在0-i位置找到小于第i+1位置数字的最后一个位置，假设为j，即A[j] &lt; A[i+1]，这种情况下，递增子序列长度就是d[j]+1，如果不取，那d[i+1] = d[i]，就这两种情况，其实说白了就是个0-1背包问题。</p>
-<p>状态转移方程是：d[i+1] = max(d[i], d[j]+1), where A[j] is the latest number smaller than A[i+1].</p>
-
-          
+          <p>对一个子序列，比如{1, 9, 3, 8, 11, 4, 5, 6, 4, 19, 7, 1, 7 }，求最长递增子序列，不要求连续，这样一个字符串的的最长递增子序列就是{1,3,4,5,6,7}或者{1,3,4,5,6,19}。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/09/17/动态规划-最长递增子序列/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -921,14 +924,14 @@
 
       
         
-          
-            <p>这个问题是动态规划的基础的问题，也是算法导论中讨论过的问题。在这里先简单描述一下。假定有一组矩阵需要做乘法操作。但是我们知道首先矩阵乘法满足了结合律。所以可以按照不同的顺序做乘法。而且不同顺序做乘法最后的乘法次数是不同的。比如〈A1, A2, A3〉分别是10 × 100, 100 × 5, 和 5 × 50。如果按照((A1 A2) A3)的顺序来计算,就是7500次，但是如果(A1 (A2 A3))这样的顺序，那结果就是75000次！！！这里有10倍的差距。所以这个题目的意思就是找到一个方案使得需要做乘法的次数最少。</p>
-<p>现在我们尝试用大白话来继续一下。问题的解决方案侧重在两个方面。一个是最少乘法的次数，另一个就是最小乘法次数的流程。在代码中我们分别用m,s来表示。先说一下m的含义。m是个二维数组，m[i,j]表示从矩阵i到矩阵j的最小乘法次数。也就是A[i],A[i+1]….A[j]的最小乘法次数。可以发现，这个次数应该等于A[i],A[i+1]…A[k] * A[k+1]….A[j-1]A[j]的次数，这里的k是输入i到j这个开区间的某个数。找到这个数字，我们也就找到了最小乘法次数。</p>
-<p>那怎么找到这个数字呢？简单的说就是把所有的可能性都列举出一遍k=i, i+1, i+2…j都尝试一遍。比较最小值就可以了。有了这个思路我们可以把递归公式写成:</p>
-<p>递归公式<br><img src="https://static.flickr.com/3869/15273951495_c1463fdaf4_o.png" alt=""></p>
-<p>这里的p就是你的矩阵维数的数组。</p>
-
-          
+          <p>这个问题是动态规划的基础的问题，也是算法导论中讨论过的问题。在这里先简单描述一下。假定有一组矩阵需要做乘法操作。但是我们知道首先矩阵乘法满足了结合律。所以可以按照不同的顺序做乘法。而且不同顺序做乘法最后的乘法次数是不同的。比如〈A1, A2, A3〉分别是10 × 100, 100 × 5, 和 5 × 50。如果按照((A1 A2) A3)的顺序来计算,就是7500次，但是如果(A1 (A2 A3))这样的顺序，那结果就是75000次！！！这里有10倍的差距。所以这个题目的意思就是找到一个方案使得需要做乘法的次数最少。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/09/17/动态规划-之-矩阵链式乘法数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1066,40 +1069,14 @@
 
       
         
-          
-            <p>递归是一门艺术，越是用的多，越是觉得递归不但威力无穷，还极大的简化的程序的编写。下面就总结一些使用递归简化代码编写难度的例子，代码都来自于准备面试的练习过程。</p>
-<h4 id="1-Swap-Nodes-in-Pairs"><a href="#1-Swap-Nodes-in-Pairs" class="headerlink" title="1. Swap Nodes in Pairs"></a>1. Swap Nodes in Pairs</h4><p>Given a linked list, swap every two adjacent nodes and return its head.</p>
-<p>For example,<br>Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3.</p>
-<p>Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.</p>
-<p>递归代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/** </div><div class="line"> * Definition for singly-linked list. </div><div class="line"> * struct ListNode &#123; </div><div class="line"> *     int val; </div><div class="line"> *     ListNode *next; </div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125; </div><div class="line"> * &#125;; </div><div class="line"> */  </div><div class="line">class Solution &#123;  </div><div class="line">public:  </div><div class="line">    ListNode *swapPairs(ListNode *ptr) &#123;  </div><div class="line">        if(ptr == nullptr || ptr-&gt;next == nullptr) &#123; //base case  </div><div class="line">            return ptr;  </div><div class="line">        &#125;  </div><div class="line">        ListNode *temp = ptr-&gt;next;  </div><div class="line">        ListNode *next = ptr-&gt;next-&gt;next;  </div><div class="line">        temp-&gt;next = ptr;  </div><div class="line">        ptr-&gt;next = swapPairs(next);  </div><div class="line">        return temp;  </div><div class="line">    &#125;  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>可以看出，使用了递归的思考方式之后，代码不需要再考虑比较复杂的边界情况，只需要把子问题当成能够成功处理并返回正确的答案的黑盒子。</p>
-<h4 id="2-另一个经典题目"><a href="#2-另一个经典题目" class="headerlink" title="2.  另一个经典题目."></a>2.  另一个经典题目.</h4><p>一个哥们面试google的时候还碰到，很简单，但是迭代很不容易做到一次bug free，但是用递归就容易多了。</p>
-<p>递归代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ListNode * ReverseList( ListNode * ptr, ListNode *last)  </div><div class="line">&#123;  </div><div class="line">   if(ptr == nullptr) return last;  </div><div class="line">   ListNode *next = ptr-&gt;next;  </div><div class="line">   ptr-&gt;next = last;  </div><div class="line">   return ReverseList(next, ptr);  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>对比迭代的解法（这已经是非常好的写法了，写迭代时你会发现需要考虑边界情况，需要担心指针会不会非法操作，一堆的事！）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ListNode * ReverseList1( ListNode * ptr )  </div><div class="line">&#123;  </div><div class="line">    ListNode * temp;  </div><div class="line">    ListNode * previous = NULL;  </div><div class="line">    while(ptr != NULL) &#123;  </div><div class="line">        temp = ptr-&gt;next;  </div><div class="line">        ptr-&gt;next = previous;  </div><div class="line">        previous = ptr;  </div><div class="line">        ptr = temp;  </div><div class="line">    &#125;  </div><div class="line">    return previous;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="3-Reverse-Nodes-in-k-Group"><a href="#3-Reverse-Nodes-in-k-Group" class="headerlink" title="3. Reverse Nodes in k-Group"></a>3. Reverse Nodes in k-Group</h4><p>For example,<br>Given this linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5</p>
-<p>For k = 2, you should return: 2-&gt;1-&gt;4-&gt;3-&gt;5</p>
-<p>For k = 3, you should return: 3-&gt;2-&gt;1-&gt;5-&gt;4</p>
-<p>递归代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">ListNode *reverseKGroup(ListNode *head, int k) &#123;  </div><div class="line">    if(head == nullptr || head-&gt;next == nullptr|| k == 1) return head;  </div><div class="line">    ListNode *pre = head, *ptr = head-&gt;next, *next;  </div><div class="line">    for(int i=1; i&lt;k &amp;&amp; ptr!=nullptr; i++) &#123;  </div><div class="line">        next = ptr-&gt;next;  </div><div class="line">        ptr-&gt;next = pre;  </div><div class="line">        pre = ptr;  </div><div class="line">        ptr = next;  </div><div class="line">    &#125;  </div><div class="line">    head-&gt;next = reverseKGroup(ptr, k);  </div><div class="line">    return pre;  </div><div class="line">&#125;</div><div class="line">```  </div><div class="line">这题如果不用递归，相当不好写的。</div><div class="line"></div><div class="line">#### 4. 二分查找的递归实现和非递归实现比较</div><div class="line"></div><div class="line">递归解法：</div></pre></td></tr></table></figure></p>
-<p>int binary_search(int* array, int start, int end, int num_wanted)<br>{<br>    int middle = (end - start)/2 + start; // a<br>    if(end &lt; start){<br>        return -1;<br>    }else if(num_wanted == array[middle]){<br>        return middle;<br>    }    </p>
-<pre><code>int index;    
-if(num_wanted &gt; array[middle]){    
-    index = binary_search(array, middle+1, end, num_wanted); // b    
-}else{    
-    index = binary_search(array, start, middle-1, num_wanted); // c    
-}    
-return index; // d    
-</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">在编写的时候，基于4个原则：</div><div class="line">a. 找基准情况：</div><div class="line"></div><div class="line">基准情况就是递归的终止条件，通常不难确定</div><div class="line"></div><div class="line">b. 不断演进，找到问题的规模更小的子问题，可能需要考虑很多限制条件</div><div class="line"></div><div class="line">c. 不要去考虑子问题是如何工作的，假设子问题通过递归调用能过正确解决</div><div class="line"></div><div class="line">d. 不要做重复的递归，譬如斐波那契数列中，f(n) = f(n-1) + f(n-2) 每次调用会增加额外两次调用，复杂度是O(2^N)</div><div class="line"></div><div class="line">### 尾递归问题</div><div class="line"></div><div class="line">二分查找的递归算法中，递归调用之后仅仅是返回了其返回值，这样的递归可以被写成尾递归的形式。事实上，递归调用过程可以分为递和归两个阶段，往下走叫递，往上走叫归，尾递归在归的过程中实际上不做任何事情（因此尾递归是可以很方便的转化成非递归程序）。上面的代码还不是尾递归形式，其尾递归形式为：</div></pre></td></tr></table></figure></p>
-<p>int binary_search(int* array, int start, int end, int num_wanted)<br>{<br>    int middle = (end - start)/2 + start; // a<br>    if(end &lt; start){<br>        return -1;<br>    }else if(num_wanted == array[middle]){<br>        return middle;<br>    }    </p>
-<pre><code>if(num_wanted &gt; array[middle]){    
-   return binary_search(array, middle+1, end, num_wanted); // b    
-} else{    
-   return binary_search(array, start, middle-1, num_wanted); // c    
-}    
-</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 尾递归的定义：</div><div class="line">函数所做的最后一件事情是一个函数调用（递归或非递归的），被称为尾部调用（tail-call），使用尾部调用的递归称为尾递归。要使调用称为真正的尾部调用，在尾部调用的函数返回前，对其结果不能执行任何其他操作。而由于在函数中不再做任何事情，那个函数的实际的栈结构也就不需要了，唯一的问题是，很多程序设计语言和编译器不知道如何除去没有用的栈结构。如果我们能找到一个除去这些不需要的栈结构的方法，那么我们的尾部递归函数就可以在固定大小的栈中运行。</div><div class="line"></div><div class="line">### 尾部调用优化</div><div class="line"></div><div class="line">在尾部调用之后除去栈结构的方法称为尾部调用优化。这种优化可以通过询问几个问题来回答：</div><div class="line"></div><div class="line">a. 函数在尾部被调用之后，还需要使用哪个本地变量？哪个也不需要</div><div class="line"></div><div class="line">b. 会对返回值做什么处理？什么处理也不做</div><div class="line"></div><div class="line">c. 传递到函数的哪个参数将会被使用？哪个也不使用</div><div class="line"></div><div class="line">好像一旦控制权传递给了尾部调用的函数，栈中就再也没有有用的内容了，虽然还占据着空间，但函数的栈结构已经事实上没用了，因此尾部调用优化就是在尾部进行函数调用的时候，使用下一个栈结构覆盖当前的栈结构，同时保持原来的返回地址。</div><div class="line"></div><div class="line">因此尾部调用优化的本质是对栈进行处理，再也不需要活动记录，所以可以删掉，并将尾部调用的函数重定向返回到调用我们的函数。这意味着我们必须手工重新编写栈来仿照一个返回地址，以使得尾部调用的函数能直接返回到调用它的函数。</div><div class="line"></div><div class="line">### 尾递归优化</div><div class="line"></div><div class="line">当函数在尾部调用中调用自己时，方法更为简单。我们只需要将参数的新值移到旧值之上，然后在本地变量保存到栈上之后立即进行一个到函数中位置的跳转。 由于我们只是跳转到同一个函数，所以返回地址和旧的是相同的，栈的大小也不会改变。 因此，在跳转之前我们要做的惟一一件事情就是使用新的参数取代旧的参数。</div><div class="line"></div><div class="line">### GCC的尾递归（尾部调用）优化</div><div class="line"></div><div class="line">GCC只要打开-O2就可以支持尾部调用优化，因为-O2会打开-foptimize-sibling-calls 选项</div><div class="line"></div><div class="line">下面是我以前写的一个非递归的模板实现：</div></pre></td></tr></table></figure></p>
-<p>template <class bidirectioniterator,="" class="" t=""><br>BidirectionIterator binary_search(BidirectionIterator begin, BidirectionIterator end, T target) {<br>    BidirectionIterator mid, end_reserve = end, last_mid;<br>    mid = begin + (end-begin)/2;<br>    while(begin != end &amp;&amp; mid != last_mid) {<br>        if(<em>mid == target) {<br>            return mid;<br>        }<br>        else if(</em>mid &gt; target) {<br>            end = mid;<br>            mid = begin + (end-begin)/2;<br>        }<br>        else {<br>            begin = mid;<br>            mid = begin + (end-begin)/2;<br>        }<br>        last_mid = mid;<br>    }<br>    return end_reserve;<br>}<br>```</class></p>
-
-          
+          <p>递归是一门艺术，越是用的多，越是觉得递归不但威力无穷，还极大的简化的程序的编写。下面就总结一些使用递归简化代码编写难度的例子，代码都来自于准备面试的练习过程。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/09/17/递归的力量/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
