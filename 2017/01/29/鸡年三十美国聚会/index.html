@@ -70,7 +70,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="动态规划," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -86,18 +86,33 @@
 
 
 
-<meta name="description" content="这个问题是动态规划的基础的问题，也是算法导论中讨论过的问题。在这里先简单描述一下。假定有一组矩阵需要做乘法操作。但是我们知道首先矩阵乘法满足了结合律。所以可以按照不同的顺序做乘法。而且不同顺序做乘法最后的乘法次数是不同的。比如〈A1, A2, A3〉分别是10 × 100, 100 × 5, 和 5 × 50。如果按照((A1 A2) A3)的顺序来计算,就是7500次，但是如果(A1 (A2 A">
+<meta name="description" content="鸡年即将到来，跟家人和友人在硅谷的家中聚餐。Amy准备了丰盛的饭菜，刘江和娜娜带了白葡萄酒，阿佳带了巧克力，刘江室友带了奶茶和蛋糕。虽然人困马乏，但是仍然能感受到浓浓的爱意，感恩！
+ 为新生活干杯 
+ 我和娜娜 
+娜娜和Amy
+丰盛的饭菜">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动态规划 - 之 - 矩阵链式乘法数">
-<meta property="og:url" content="http://jingcmu.com/2014/09/17/动态规划-之-矩阵链式乘法数/index.html">
+<meta property="og:title" content="鸡年三十美国聚会">
+<meta property="og:url" content="http://jingcmu.com/2017/01/29/鸡年三十美国聚会/index.html">
 <meta property="og:site_name" content="陈靖的读书笔记">
-<meta property="og:description" content="这个问题是动态规划的基础的问题，也是算法导论中讨论过的问题。在这里先简单描述一下。假定有一组矩阵需要做乘法操作。但是我们知道首先矩阵乘法满足了结合律。所以可以按照不同的顺序做乘法。而且不同顺序做乘法最后的乘法次数是不同的。比如〈A1, A2, A3〉分别是10 × 100, 100 × 5, 和 5 × 50。如果按照((A1 A2) A3)的顺序来计算,就是7500次，但是如果(A1 (A2 A">
-<meta property="og:image" content="https://static.flickr.com/3869/15273951495_c1463fdaf4_o.png">
-<meta property="og:updated_time" content="2017-01-26T13:35:14.000Z">
+<meta property="og:description" content="鸡年即将到来，跟家人和友人在硅谷的家中聚餐。Amy准备了丰盛的饭菜，刘江和娜娜带了白葡萄酒，阿佳带了巧克力，刘江室友带了奶茶和蛋糕。虽然人困马乏，但是仍然能感受到浓浓的爱意，感恩！
+ 为新生活干杯 
+ 我和娜娜 
+娜娜和Amy
+丰盛的饭菜">
+<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4491.JPG?raw=true">
+<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4498.JPG?raw=true">
+<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4501.JPG?raw=true">
+<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4503.JPG?raw=true">
+<meta property="og:updated_time" content="2017-01-29T08:21:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动态规划 - 之 - 矩阵链式乘法数">
-<meta name="twitter:description" content="这个问题是动态规划的基础的问题，也是算法导论中讨论过的问题。在这里先简单描述一下。假定有一组矩阵需要做乘法操作。但是我们知道首先矩阵乘法满足了结合律。所以可以按照不同的顺序做乘法。而且不同顺序做乘法最后的乘法次数是不同的。比如〈A1, A2, A3〉分别是10 × 100, 100 × 5, 和 5 × 50。如果按照((A1 A2) A3)的顺序来计算,就是7500次，但是如果(A1 (A2 A">
-<meta name="twitter:image" content="https://static.flickr.com/3869/15273951495_c1463fdaf4_o.png">
+<meta name="twitter:title" content="鸡年三十美国聚会">
+<meta name="twitter:description" content="鸡年即将到来，跟家人和友人在硅谷的家中聚餐。Amy准备了丰盛的饭菜，刘江和娜娜带了白葡萄酒，阿佳带了巧克力，刘江室友带了奶茶和蛋糕。虽然人困马乏，但是仍然能感受到浓浓的爱意，感恩！
+ 为新生活干杯 
+ 我和娜娜 
+娜娜和Amy
+丰盛的饭菜">
+<meta name="twitter:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4491.JPG?raw=true">
 
 
 
@@ -125,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://jingcmu.com/2014/09/17/动态规划-之-矩阵链式乘法数/"/>
+  <link rel="canonical" href="http://jingcmu.com/2017/01/29/鸡年三十美国聚会/"/>
 
 
 
 
 
-  <title> 动态规划 - 之 - 矩阵链式乘法数 | 陈靖的读书笔记 </title>
+  <title> 鸡年三十美国聚会 | 陈靖的读书笔记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -304,7 +319,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jingcmu.com/2014/09/17/动态规划-之-矩阵链式乘法数/">
+  <link itemprop="mainEntityOfPage" href="http://jingcmu.com/2017/01/29/鸡年三十美国聚会/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Jing Chen">
@@ -328,7 +343,7 @@
             
             
               
-                动态规划 - 之 - 矩阵链式乘法数
+                鸡年三十美国聚会
               
             
           </h1>
@@ -343,8 +358,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-09-17T19:43:10-07:00">
-                2014-09-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-29T00:11:17-08:00">
+                2017-01-29
               </time>
             
 
@@ -366,8 +381,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
+                  <a href="/categories/图记生活/" itemprop="url" rel="index">
+                    <span itemprop="name">图记生活</span>
                   </a>
                 </span>
 
@@ -384,8 +399,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2014/09/17/动态规划-之-矩阵链式乘法数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/17/动态规划-之-矩阵链式乘法数/" itemprop="commentCount"></span>
+                <a href="/2017/01/29/鸡年三十美国聚会/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/29/鸡年三十美国聚会/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -411,13 +426,11 @@
       
 
       
-        <p>这个问题是动态规划的基础的问题，也是算法导论中讨论过的问题。在这里先简单描述一下。假定有一组矩阵需要做乘法操作。但是我们知道首先矩阵乘法满足了结合律。所以可以按照不同的顺序做乘法。而且不同顺序做乘法最后的乘法次数是不同的。比如〈A1, A2, A3〉分别是10 × 100, 100 × 5, 和 5 × 50。如果按照((A1 A2) A3)的顺序来计算,就是7500次，但是如果(A1 (A2 A3))这样的顺序，那结果就是75000次！！！这里有10倍的差距。所以这个题目的意思就是找到一个方案使得需要做乘法的次数最少。</p>
-<a id="more"></a>
-<p>现在我们尝试用大白话来继续一下。问题的解决方案侧重在两个方面。一个是最少乘法的次数，另一个就是最小乘法次数的流程。在代码中我们分别用m,s来表示。先说一下m的含义。m是个二维数组，m[i,j]表示从矩阵i到矩阵j的最小乘法次数。也就是A[i],A[i+1]….A[j]的最小乘法次数。可以发现，这个次数应该等于A[i],A[i+1]…A[k] * A[k+1]….A[j-1]A[j]的次数，这里的k是输入i到j这个开区间的某个数。找到这个数字，我们也就找到了最小乘法次数。</p>
-<p>那怎么找到这个数字呢？简单的说就是把所有的可能性都列举出一遍k=i, i+1, i+2…j都尝试一遍。比较最小值就可以了。有了这个思路我们可以把递归公式写成:</p>
-<p>递归公式<br><img src="https://static.flickr.com/3869/15273951495_c1463fdaf4_o.png" alt=""></p>
-<p>这里的p就是你的矩阵维数的数组。</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=32628933&auto=1&height=66"></iframe>
+        <p>鸡年即将到来，跟家人和友人在硅谷的家中聚餐。Amy准备了丰盛的饭菜，刘江和娜娜带了白葡萄酒，阿佳带了巧克力，刘江室友带了奶茶和蛋糕。虽然人困马乏，但是仍然能感受到浓浓的爱意，感恩！</p>
+<p><center><font size="5"> 为新生活干杯 </font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4491.JPG?raw=true" width="80%"></p>
+<p><center><font size="5"> 我和娜娜 </font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4498.JPG?raw=true" width="80%"></p>
+<p><center><font size="5">娜娜和Amy</font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4501.JPG?raw=true" width="80%"></p>
+<p><center><font size="5">丰盛的饭菜</font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4503.JPG?raw=true" width="80%"></p>
 
       
     </div>
@@ -439,19 +452,13 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/09/17/递归的力量/" rel="next" title="递归的力量">
-                <i class="fa fa-chevron-left"></i> 递归的力量
+              <a href="/2014/10/15/时间戳问题汇总-转/" rel="next" title="时间戳问题汇总(转)">
+                <i class="fa fa-chevron-left"></i> 时间戳问题汇总(转)
               </a>
             
           </div>
@@ -459,10 +466,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2014/09/17/动态规划-最长递增子序列/" rel="prev" title="动态规划 - 最长递增子序列">
-                动态规划 - 最长递增子序列 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -488,8 +491,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2014/09/17/动态规划-之-矩阵链式乘法数/"
-           data-title="动态规划 - 之 - 矩阵链式乘法数" data-url="http://jingcmu.com/2014/09/17/动态规划-之-矩阵链式乘法数/">
+      <div class="ds-thread" data-thread-key="2017/01/29/鸡年三十美国聚会/"
+           data-title="鸡年三十美国聚会" data-url="http://jingcmu.com/2017/01/29/鸡年三十美国聚会/">
       </div>
     
   </div>
