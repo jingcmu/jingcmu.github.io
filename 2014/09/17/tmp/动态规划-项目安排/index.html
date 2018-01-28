@@ -70,7 +70,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="动态规划," />
 
 
 
@@ -86,17 +86,18 @@
 
 
 
-<meta name="description" content="Divide number and return result in form of a string. e.g 100/3 result should be 33.(3) Here 3 is in brackets because it gets repeated continuously and 5/10 should be 0.5. 这题难在怎么去判断循环和记录循环出现的位置">
+<meta name="description" content="题目来源：网易有道2013年校园招聘面试二面试题 题目描述：小明每天都在开源社区上做项目，假设每天他都有很多项目可以选，其中每个项目都有一个开始时间和截止时间，假设做完每个项目后，拿到报酬都是不同的。由于小明马上就要硕士毕业了，面临着买房、买车、给女友买各种包包的鸭梨，但是他的钱包却空空如也，他需要足够的money来充实钱包。万能的网友麻烦你来帮帮小明，如何在最短时间内安排自己手中的项目才能保证赚">
+<meta name="keywords" content="动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一个google的面试题 计算两个整数相除">
-<meta property="og:url" content="http://jingcmu.com/2014/09/17/一个google的面试题-计算两个整数相除/index.html">
+<meta property="og:title" content="动态规划--项目安排">
+<meta property="og:url" content="http://jingcmu.com/2014/09/17/tmp/动态规划-项目安排/index.html">
 <meta property="og:site_name" content="85脑筋放大镜">
-<meta property="og:description" content="Divide number and return result in form of a string. e.g 100/3 result should be 33.(3) Here 3 is in brackets because it gets repeated continuously and 5/10 should be 0.5. 这题难在怎么去判断循环和记录循环出现的位置">
+<meta property="og:description" content="题目来源：网易有道2013年校园招聘面试二面试题 题目描述：小明每天都在开源社区上做项目，假设每天他都有很多项目可以选，其中每个项目都有一个开始时间和截止时间，假设做完每个项目后，拿到报酬都是不同的。由于小明马上就要硕士毕业了，面临着买房、买车、给女友买各种包包的鸭梨，但是他的钱包却空空如也，他需要足够的money来充实钱包。万能的网友麻烦你来帮帮小明，如何在最短时间内安排自己手中的项目才能保证赚">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-01-26T13:34:22.000Z">
+<meta property="og:updated_time" content="2017-01-26T13:35:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个google的面试题 计算两个整数相除">
-<meta name="twitter:description" content="Divide number and return result in form of a string. e.g 100/3 result should be 33.(3) Here 3 is in brackets because it gets repeated continuously and 5/10 should be 0.5. 这题难在怎么去判断循环和记录循环出现的位置">
+<meta name="twitter:title" content="动态规划--项目安排">
+<meta name="twitter:description" content="题目来源：网易有道2013年校园招聘面试二面试题 题目描述：小明每天都在开源社区上做项目，假设每天他都有很多项目可以选，其中每个项目都有一个开始时间和截止时间，假设做完每个项目后，拿到报酬都是不同的。由于小明马上就要硕士毕业了，面临着买房、买车、给女友买各种包包的鸭梨，但是他的钱包却空空如也，他需要足够的money来充实钱包。万能的网友麻烦你来帮帮小明，如何在最短时间内安排自己手中的项目才能保证赚">
 
 
 
@@ -124,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://jingcmu.com/2014/09/17/一个google的面试题-计算两个整数相除/"/>
+  <link rel="canonical" href="http://jingcmu.com/2014/09/17/tmp/动态规划-项目安排/"/>
 
 
 
 
 
-  <title> 一个google的面试题 计算两个整数相除 | 85脑筋放大镜 </title>
+  <title> 动态规划--项目安排 | 85脑筋放大镜 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -303,7 +304,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jingcmu.com/2014/09/17/一个google的面试题-计算两个整数相除/">
+  <link itemprop="mainEntityOfPage" href="http://jingcmu.com/2014/09/17/tmp/动态规划-项目安排/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="吃土的靖哥哥">
@@ -327,7 +328,7 @@
             
             
               
-                一个google的面试题 计算两个整数相除
+                动态规划--项目安排
               
             
           </h1>
@@ -342,7 +343,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-09-17T20:07:09+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-09-17T20:02:43+08:00">
                 2014-09-17
               </time>
             
@@ -383,8 +384,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2014/09/17/一个google的面试题-计算两个整数相除/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/17/一个google的面试题-计算两个整数相除/" itemprop="commentCount"></span>
+                <a href="/2014/09/17/tmp/动态规划-项目安排/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/17/tmp/动态规划-项目安排/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -410,13 +411,17 @@
       
 
       
-        <p>Divide number and return result in form of a string. e.g 100/3 result should be 33.(3) Here 3 is in brackets because it gets repeated continuously and 5/10 should be 0.5.</p>
-<p>这题难在怎么去判断循环和记录循环出现的位置</p>
+        <p>题目来源：网易有道2013年校园招聘面试二面试题</p>
+<p>题目描述：<br>小明每天都在开源社区上做项目，假设每天他都有很多项目可以选，其中每个项目都有一个开始时间和截止时间，假设做完每个项目后，拿到报酬都是不同的。由于小明马上就要硕士毕业了，面临着买房、买车、给女友买各种包包的鸭梨，但是他的钱包却空空如也，他需要足够的money来充实钱包。万能的网友麻烦你来帮帮小明，如何在最短时间内安排自己手中的项目才能保证赚钱最多（注意：做项目的时候，项目不能并行，即两个项目之间不能有时间重叠，但是一个项目刚结束，就可以立即做另一个项目，即项目起止时间点可以重叠）。</p>
 <a id="more"></a>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=32628933&auto=1&height=66"></iframe>
 
-<p>上代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#include &quot;common.hpp&quot;  </div><div class="line">  </div><div class="line">string caldec(int a, int b) &#123;  </div><div class="line">    string s = &quot;&quot;;  </div><div class="line">    int residule = a%b;   </div><div class="line">    unordered_map&lt;int, int&gt; residule_index; //记录出现过的残差的值和位置  </div><div class="line">    s += to_string(a/b);  </div><div class="line">    s += &quot;.&quot;;  </div><div class="line">    int index = s.length();  </div><div class="line">    while(residule != 0 &amp;&amp; residule_index.find(residule) == residule_index.end()) &#123;  </div><div class="line">        residule_index[residule] = index++;  </div><div class="line">        s += to_string((residule*10)/b);  </div><div class="line">        residule = (residule*10)%b;  </div><div class="line">    &#125;  </div><div class="line">    if(residule_index.find(residule) != residule_index.end()) &#123;  </div><div class="line">        int i = residule_index[residule];  </div><div class="line">        s.insert(i, &quot;(&quot;);  </div><div class="line">        s += &quot;)&quot;;  </div><div class="line">    &#125;  </div><div class="line">    if(s[s.length()-1] == &apos;.&apos;) &#123;  </div><div class="line">        s = s.substr(0, s.length() - 1);  </div><div class="line">    &#125;  </div><div class="line">    return s;  </div><div class="line">&#125;  </div><div class="line">//我最近比较喜欢用随机数进行测试  </div><div class="line">int main() &#123;  </div><div class="line">    srand(time(NULL));  </div><div class="line">    for(int i=0; i&lt;10; i++) &#123;  </div><div class="line">        int a = rand()%101;  </div><div class="line">        int b = rand()%29;  </div><div class="line">        if(a &gt; b &amp;&amp; b != 0) &#123;  </div><div class="line">            cout &lt;&lt; &quot;a = &quot; &lt;&lt; a &lt;&lt; &quot;, b = &quot; &lt;&lt; b &lt;&lt; &quot;, res = &quot; &lt;&lt; caldec(a, b) &lt;&lt; endl;  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">    return 0;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+<p>输入：<br>输入可能包含多个测试样例。<br>对于每个测试案例，输入的第一行是一个整数n(1&lt;=n&lt;=10000)：代表小明手中的项目个数。<br>接下来共有n行，每行有3个整数st、ed、val，分别表示项目的开始、截至时间和项目的报酬，相邻两数之间用空格隔开。<br>st、ed、value取值均在32位有符号整数（int）的范围内，输入数据保证所有数据的value总和也在int范围内。</p>
+<p>输出：<br>对应每个测试案例，输出小明可以获得的最大报酬。</p>
+<p>样例输入：<br>3<br>1 3 6<br>4 8 9<br>2 5 16<br>4<br>1 14 10<br>5 20 15<br>15 20 8<br>18 22 12<br>样例输出：<br>16<br>22</p>
+<p>思路：<br>总共有n个项目，用倒推的思想，假设已经知道第n-1个项目中的最优解dp[n-1]，如果要得到n个项目中的最优解dp[n]，就需要比较添加了第n个项目之后是否会提高收益，而添加了第n个项目之后的解是，value[n] + dp[i]，其中i是指添加了第n个项目之后，前i个项目可以不受影响的进行。<br>到了这一步，就可以知道需要对项目按照结束时间进行排序了，对吧？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;  </div><div class="line">#include &lt;algorithm&gt;  </div><div class="line">using namespace std;  </div><div class="line">int n;  </div><div class="line">class P&#123;  </div><div class="line">public:  </div><div class="line">    int st,ed,value;  </div><div class="line">&#125;;  </div><div class="line">P p[10001];  </div><div class="line">int dp[10001]; //dp[i]安排前i个项目，多能到得到的最大value  </div><div class="line">bool cmp(const P &amp; p1, const P &amp; p2)&#123;  </div><div class="line">    return p1.ed &lt; p2.ed;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line">int main()&#123;  </div><div class="line">    int n, i, j;  </div><div class="line">    while(scanf(&quot;%d&quot;, &amp;n) != EOF)&#123;  </div><div class="line">        for(i=1; i&lt;=n; i++)&#123;  </div><div class="line">            scanf(&quot;%d %d %d&quot;, &amp;p[i].st, &amp;p[i].ed, &amp;p[i].value);  </div><div class="line">            dp[i] = 0;  </div><div class="line">        &#125;  </div><div class="line">        sort(p+1, p+n+1, cmp);  </div><div class="line">        dp[0] = 0;  </div><div class="line">        for(i=1; i&lt;=n; i++)&#123;  </div><div class="line">            for(j=i-1; j&gt;0; j--)&#123;  </div><div class="line">                if(p[i].st &gt;= p[j].ed)  </div><div class="line">                    break;  </div><div class="line">            &#125;  </div><div class="line">            dp[i] = dp[j] + p[i].value;  </div><div class="line">            if(dp[i] &lt; dp[i-1])  </div><div class="line">                dp[i] = dp[i-1];  </div><div class="line">        &#125;  </div><div class="line">        printf(&quot;%d\n&quot;,dp[n]);  </div><div class="line">    &#125;  </div><div class="line">    return 0;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -437,13 +442,19 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/09/17/动态规划-项目安排/" rel="next" title="动态规划--项目安排">
-                <i class="fa fa-chevron-left"></i> 动态规划--项目安排
+              <a href="/2014/09/17/tmp/动态规划-最长递增子序列/" rel="next" title="动态规划 - 最长递增子序列">
+                <i class="fa fa-chevron-left"></i> 动态规划 - 最长递增子序列
               </a>
             
           </div>
@@ -452,8 +463,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/10/15/时间戳问题汇总-转/" rel="prev" title="时间戳问题汇总(转)">
-                时间戳问题汇总(转) <i class="fa fa-chevron-right"></i>
+              <a href="/2014/09/17/tmp/一个google的面试题-计算两个整数相除/" rel="prev" title="一个google的面试题 计算两个整数相除">
+                一个google的面试题 计算两个整数相除 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -480,8 +491,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2014/09/17/一个google的面试题-计算两个整数相除/"
-           data-title="一个google的面试题 计算两个整数相除" data-url="http://jingcmu.com/2014/09/17/一个google的面试题-计算两个整数相除/">
+      <div class="ds-thread" data-thread-key="2014/09/17/tmp/动态规划-项目安排/"
+           data-title="动态规划--项目安排" data-url="http://jingcmu.com/2014/09/17/tmp/动态规划-项目安排/">
       </div>
     
   </div>
