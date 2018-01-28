@@ -70,7 +70,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="动态规划," />
 
 
 
@@ -86,28 +86,18 @@
 
 
 
-<meta name="description" content="鸡年即将到来，跟家人和友人在硅谷的家中聚餐。Amy准备了丰盛的饭菜，刘江和娜娜带了白葡萄酒，阿佳带了巧克力，刘江室友带了奶茶和蛋糕。虽然人困马乏，但是仍然能感受到浓浓的爱意，感恩！">
+<meta name="description" content="对一个子序列，比如{1, 9, 3, 8, 11, 4, 5, 6, 4, 19, 7, 1, 7 }，求最长递增子序列，不要求连续，这样一个字符串的的最长递增子序列就是{1,3,4,5,6,7}或者{1,3,4,5,6,19}。">
+<meta name="keywords" content="动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="鸡年三十美国聚会">
-<meta property="og:url" content="http://jingcmu.com/2017/01/29/tmp/鸡年三十美国聚会/index.html">
+<meta property="og:title" content="动态规划 - 最长递增子序列">
+<meta property="og:url" content="http://jingcmu.com/2014/09/17/技术/动态规划-最长递增子序列/index.html">
 <meta property="og:site_name" content="85脑筋放大镜">
-<meta property="og:description" content="鸡年即将到来，跟家人和友人在硅谷的家中聚餐。Amy准备了丰盛的饭菜，刘江和娜娜带了白葡萄酒，阿佳带了巧克力，刘江室友带了奶茶和蛋糕。虽然人困马乏，但是仍然能感受到浓浓的爱意，感恩！">
+<meta property="og:description" content="对一个子序列，比如{1, 9, 3, 8, 11, 4, 5, 6, 4, 19, 7, 1, 7 }，求最长递增子序列，不要求连续，这样一个字符串的的最长递增子序列就是{1,3,4,5,6,7}或者{1,3,4,5,6,19}。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4491.JPG?raw=true">
-<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4498.JPG?raw=true">
-<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4501.JPG?raw=true">
-<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4503.JPG?raw=true">
-<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4494.JPG?raw=true">
-<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4495.JPG?raw=true">
-<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4504.JPG?raw=true">
-<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4507.PNG?raw=true">
-<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4508.JPG?raw=true">
-<meta property="og:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4509.JPG?raw=true">
-<meta property="og:updated_time" content="2017-01-29T08:51:59.000Z">
+<meta property="og:updated_time" content="2017-01-26T13:35:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="鸡年三十美国聚会">
-<meta name="twitter:description" content="鸡年即将到来，跟家人和友人在硅谷的家中聚餐。Amy准备了丰盛的饭菜，刘江和娜娜带了白葡萄酒，阿佳带了巧克力，刘江室友带了奶茶和蛋糕。虽然人困马乏，但是仍然能感受到浓浓的爱意，感恩！">
-<meta name="twitter:image" content="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4491.JPG?raw=true">
+<meta name="twitter:title" content="动态规划 - 最长递增子序列">
+<meta name="twitter:description" content="对一个子序列，比如{1, 9, 3, 8, 11, 4, 5, 6, 4, 19, 7, 1, 7 }，求最长递增子序列，不要求连续，这样一个字符串的的最长递增子序列就是{1,3,4,5,6,7}或者{1,3,4,5,6,19}。">
 
 
 
@@ -135,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://jingcmu.com/2017/01/29/tmp/鸡年三十美国聚会/"/>
+  <link rel="canonical" href="http://jingcmu.com/2014/09/17/技术/动态规划-最长递增子序列/"/>
 
 
 
 
 
-  <title> 鸡年三十美国聚会 | 85脑筋放大镜 </title>
+  <title> 动态规划 - 最长递增子序列 | 85脑筋放大镜 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -314,7 +304,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jingcmu.com/2017/01/29/tmp/鸡年三十美国聚会/">
+  <link itemprop="mainEntityOfPage" href="http://jingcmu.com/2014/09/17/技术/动态规划-最长递增子序列/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="吃土的靖哥哥">
@@ -338,7 +328,7 @@
             
             
               
-                鸡年三十美国聚会
+                动态规划 - 最长递增子序列
               
             
           </h1>
@@ -353,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-29T00:11:17+08:00">
-                2017-01-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-09-17T20:01:45+08:00">
+                2014-09-17
               </time>
             
 
@@ -376,8 +366,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/图记生活/" itemprop="url" rel="index">
-                    <span itemprop="name">图记生活</span>
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
                   </a>
                 </span>
 
@@ -394,8 +384,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/29/tmp/鸡年三十美国聚会/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/29/tmp/鸡年三十美国聚会/" itemprop="commentCount"></span>
+                <a href="/2014/09/17/技术/动态规划-最长递增子序列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/17/技术/动态规划-最长递增子序列/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -421,20 +411,14 @@
       
 
       
-        <p>鸡年即将到来，跟家人和友人在硅谷的家中聚餐。Amy准备了丰盛的饭菜，刘江和娜娜带了白葡萄酒，阿佳带了巧克力，刘江室友带了奶茶和蛋糕。虽然人困马乏，但是仍然能感受到浓浓的爱意，感恩！</p>
+        <p>对一个子序列，比如{1, 9, 3, 8, 11, 4, 5, 6, 4, 19, 7, 1, 7 }，求最长递增子序列，不要求连续，这样一个字符串的的最长递增子序列就是{1,3,4,5,6,7}或者{1,3,4,5,6,19}。</p>
 <a id="more"></a>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=17248351&auto=1&height=66"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=32628933&auto=1&height=66"></iframe>
 
-<p><center><font size="5"> 为新生活干杯 </font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4491.JPG?raw=true" width="80%"></p>
-<p><center><font size="5"> 我和娜娜 </font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4498.JPG?raw=true" width="80%"></p>
-<p><center><font size="5">娜娜和Amy</font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4501.JPG?raw=true" width="80%"></p>
-<p><center><font size="5">丰盛的饭菜</font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4503.JPG?raw=true" width="80%"></p>
-<p><center><font size="5">友人合影1</font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4494.JPG?raw=true" width="80%"></p>
-<p><center><font size="5">友人合影2</font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4495.JPG?raw=true" width="80%"></p>
-<p><center><font size="5">Amy这个鱼做的太成功了</font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4504.JPG?raw=true" width="80%"></p>
-<p><center><font size="5">阿嘉发的大红包</font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4507.PNG?raw=true" width="80%"></p>
-<p><center><font size="5">我送给Amy的梳子</font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4508.JPG?raw=true" width="80%"></p>
-<p><center><font size="5">梅花祥云-梳心</font></center><br><img src="https://github.com/jingcmu/jingcmu.com/blob/master/images/IMG_4509.JPG?raw=true" width="80%"></p>
+<p>思路：跟我之前发的《动态规划之项目安排》的思路很像，但是要简单些。</p>
+<p>假设我们知道d[i]代表到第i个位置的最长递增子序列的长度，那么d[i+1]该怎么求？</p>
+<p>在第i+1位置无非是两种情况，取和不取，取的话，那么就在0-i位置找到小于第i+1位置数字的最后一个位置，假设为j，即A[j] &lt; A[i+1]，这种情况下，递增子序列长度就是d[j]+1，如果不取，那d[i+1] = d[i]，就这两种情况，其实说白了就是个0-1背包问题。</p>
+<p>状态转移方程是：d[i+1] = max(d[i], d[j]+1), where A[j] is the latest number smaller than A[i+1].</p>
 
       
     </div>
@@ -456,13 +440,19 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/10/15/tmp/时间戳问题汇总-转/" rel="next" title="时间戳问题汇总(转)">
-                <i class="fa fa-chevron-left"></i> 时间戳问题汇总(转)
+              <a href="/2014/09/17/技术/动态规划-之-矩阵链式乘法数/" rel="next" title="动态规划 - 之 - 矩阵链式乘法数">
+                <i class="fa fa-chevron-left"></i> 动态规划 - 之 - 矩阵链式乘法数
               </a>
             
           </div>
@@ -471,8 +461,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/25/tmp/我家小宝/" rel="prev" title="我家小宝">
-                我家小宝 <i class="fa fa-chevron-right"></i>
+              <a href="/2014/09/17/技术/动态规划-项目安排/" rel="prev" title="动态规划--项目安排">
+                动态规划--项目安排 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -499,8 +489,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/29/tmp/鸡年三十美国聚会/"
-           data-title="鸡年三十美国聚会" data-url="http://jingcmu.com/2017/01/29/tmp/鸡年三十美国聚会/">
+      <div class="ds-thread" data-thread-key="2014/09/17/技术/动态规划-最长递增子序列/"
+           data-title="动态规划 - 最长递增子序列" data-url="http://jingcmu.com/2014/09/17/技术/动态规划-最长递增子序列/">
       </div>
     
   </div>
